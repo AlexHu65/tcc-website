@@ -1,59 +1,147 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# TCC Website (Laravel + Statamic)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sitio web de marketing/blog administrado con Statamic sobre Laravel, con Home 100% editable desde el Control Panel y formulario de contacto con almacenamiento seguro en base de datos cifrada.
 
-## About Laravel
+## Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP 8.2+
+- Laravel 12
+- Statamic 6
+- MySQL
+- Vite + Tailwind CSS
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Funcionalidades principales
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Home administrable desde Statamic mediante `Replicator` (secciones dinámicas).
+- Blog y páginas administrables desde el CP.
+- Formulario de contacto en Home usando Statamic Forms.
+- Datos sensibles de contacto cifrados en base de datos (no se almacenan en plano).
+- Vista interna en CP para consultar submissions sensibles.
 
-## Learning Laravel
+## Estructura clave del proyecto
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- `content/collections/pages/home.md`  
+  Contenido del Home con secciones dinámicas (`sections`).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- `resources/blueprints/collections/pages/pages.yaml`  
+  Blueprint de páginas, incluye `Replicator` para construir el Home.
 
-## Laravel Sponsors
+- `resources/forms/contacto.yaml`  
+  Configuración del formulario Statamic (`store: false`).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- `resources/blueprints/forms/contacto.yaml`  
+  Blueprint de campos válidos del formulario (`nombre`, `email`, `telefono`, `mensaje`).
 
-### Premium Partners
+- `resources/views/pages/home.blade.php`  
+  Render dinámico de bloques del Home y formulario en 2 pasos.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- `app/Listeners/StoreSensitiveFormSubmission.php`  
+  Listener que intercepta `FormSubmitted` y guarda payload cifrado en DB.
 
-## Contributing
+- `database/migrations/*_create_sensitive_form_submissions_table.php`  
+  Tabla para submissions sensibles cifrados.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- `app/Http/Controllers/CpSensitiveSubmissionController.php`  
+  Listado/detalle de submissions cifrados en rutas protegidas de CP.
 
-## Code of Conduct
+- `resources/views/cp/sensitive-submissions/*.blade.php`  
+  Vistas para consultar submissions sensibles desde panel.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Instalación local
 
-## Security Vulnerabilities
+1. Instalar dependencias:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+npm install
+```
 
-## License
+2. Configurar entorno:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+3. Configurar base de datos en `.env` (`DB_*`).
+
+4. Ejecutar migraciones:
+
+```bash
+php artisan migrate
+```
+
+5. Levantar proyecto:
+
+```bash
+php artisan serve
+npm run dev
+```
+
+## Usuario admin (Statamic CP)
+
+- CP URL: `http://localhost:8000/cp`
+- Si necesitas crear admin:
+
+```bash
+php artisan statamic:make:user admin@tcc.local --super
+```
+
+## Flujo de formulario sensible
+
+1. Usuario envía formulario en Home.
+2. Statamic valida y procesa el submit.
+3. Listener `StoreSensitiveFormSubmission`:
+   - evita duplicados rápidos (dedupe temporal),
+   - cifra payload con `Crypt::encryptString`,
+   - guarda en tabla `sensitive_form_submissions`.
+4. Datos se consultan en CP en ruta segura.
+
+## Seguridad implementada
+
+- `store: false` en `resources/forms/contacto.yaml` para no persistir YAML plano de submissions.
+- Payload cifrado en DB (`encrypted_payload`).
+- Hash de email (`email_hash`) para búsqueda sin exponer correo en claro.
+- Vistas de consulta protegidas por autenticación y validación de usuario super admin.
+- Prevención de doble envío:
+  - frontend: bloqueo de submit y botón deshabilitado,
+  - backend: deduplicación temporal por huella.
+
+## Rutas importantes
+
+- Sitio:
+  - `/`
+  - `/blog`
+
+- Statamic CP:
+  - `/cp`
+  - `/cp/forms/contacto`
+
+- Submissions sensibles (CP):
+  - `/cp/forms/contacto/sensitive-submissions`
+  - `/cp/forms/contacto/sensitive-submissions/{id}`
+
+## Comandos útiles
+
+```bash
+# refrescar cache de contenido Statamic
+php artisan statamic:stache:refresh
+
+# limpiar caches de Laravel
+php artisan optimize:clear
+
+# build de frontend
+npm run build
+```
+
+## Notas para GitHub
+
+- No subir credenciales ni `.env`.
+- Antes de abrir PR:
+  - ejecutar `php artisan migrate` en entorno local,
+  - ejecutar `npm run build` o `npm run dev`,
+  - validar flujo de formulario y visualización en CP.
+
+## Licencia
+
+Proyecto privado para uso interno del equipo/cliente.
