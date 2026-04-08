@@ -1,0 +1,13 @@
+title: Pages
+route: '{parent_uri}/{slug}'
+slugs: true
+date: false
+dated: false
+mount: null
+template: default
+layout: layout
+revisions: false
+search_index: null
+structure:
+  root: true
+  max_depth: 3
