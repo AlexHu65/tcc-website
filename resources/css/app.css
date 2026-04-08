@@ -9,3 +9,138 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+:root {
+    --color-cream: #f7f2ea;
+    --color-cream-soft: #fdfaf6;
+    --color-ochre: #c18a3b;
+    --color-ochre-dark: #9b6f2e;
+    --color-brown: #5a3f2a;
+    --color-brown-soft: #7a5a3b;
+    --shadow-soft: 0 10px 30px rgba(90, 63, 42, 0.08);
+    --shadow-hover: 0 18px 40px rgba(90, 63, 42, 0.14);
+    --shadow-editorial: 0 24px 60px rgba(90, 63, 42, 0.12);
+}
+
+.bg-cream {
+    background-color: var(--color-cream);
+}
+
+.bg-cream-soft {
+    background-color: var(--color-cream-soft);
+}
+
+.text-brown {
+    color: var(--color-brown);
+}
+
+.text-brown-soft {
+    color: var(--color-brown-soft);
+}
+
+.text-ochre {
+    color: var(--color-ochre);
+}
+
+.btn-warm {
+    background-color: var(--color-ochre);
+    color: #fffdf8;
+    transition: transform 260ms ease, box-shadow 260ms ease, background-color 260ms ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-warm:hover {
+    background-color: var(--color-ochre-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-warm {
+    background: #fffdf9;
+    border: 1px solid #ecdcc7;
+    box-shadow: var(--shadow-soft);
+    transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.card-warm:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: #dfc5a3;
+}
+
+.card-editorial {
+    background: linear-gradient(165deg, #fffdf9, #fbf3e8);
+    border: 1px solid #e9d4b7;
+    box-shadow: var(--shadow-editorial);
+}
+
+.title-serif {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+    letter-spacing: -0.01em;
+}
+
+.eyebrow {
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 0.73rem;
+    font-weight: 700;
+    color: var(--color-ochre-dark);
+}
+
+.section-divider {
+    border-top: 1px solid #e8d8c4;
+}
+
+.content-prose {
+    line-height: 1.82;
+    font-size: 1.05rem;
+}
+
+.mobile-cta {
+    box-shadow: 0 -8px 24px rgba(90, 63, 42, 0.12);
+}
+
+.desktop-float-cta.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-up {
+    animation: fadeInUp 700ms ease both;
+}
+
+.fade-in-up-delay {
+    animation: fadeInUp 900ms ease both;
+}
+
+.link-warm {
+    color: var(--color-brown-soft);
+    transition: color 220ms ease, opacity 220ms ease;
+}
+
+.link-warm:hover {
+    color: var(--color-ochre-dark);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-up,
+    .fade-in-up-delay,
+    .btn-warm,
+    .card-warm,
+    .link-warm {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}
