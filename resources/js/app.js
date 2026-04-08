@@ -32,9 +32,11 @@ if (contactForm) {
 
     nextButton?.addEventListener('click', () => {
         const nameInput = contactForm.querySelector('#nombre');
+        const phoneInput = contactForm.querySelector('#telefono');
         const emailInput = contactForm.querySelector('#email');
 
         const isNameValid = nameInput && nameInput.value.trim().length > 0;
+        const isPhoneValid = phoneInput && phoneInput.value.trim().length > 0;
         const isEmailValid = emailInput && emailInput.checkValidity();
 
         if (!isNameValid) {
@@ -48,8 +50,29 @@ if (contactForm) {
             return;
         }
 
+        if (!isPhoneValid) {
+            phoneInput?.focus();
+            return;
+        }
+
         showStep(2);
     });
 
     prevButton?.addEventListener('click', () => showStep(1));
+
+    contactForm.addEventListener('submit', (event) => {
+        if (contactForm.dataset.submitting === 'true') {
+            event.preventDefault();
+            return;
+        }
+
+        contactForm.dataset.submitting = 'true';
+
+        const submitButton = contactForm.querySelector('button[type="submit"], button:not([type])');
+        if (submitButton) {
+            submitButton.setAttribute('disabled', 'disabled');
+            submitButton.classList.add('opacity-60', 'cursor-not-allowed');
+            submitButton.textContent = 'Enviando...';
+        }
+    });
 }

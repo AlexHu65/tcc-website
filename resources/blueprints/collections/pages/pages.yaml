@@ -33,3 +33,246 @@ tabs:
             field:
               type: markdown
               display: Content
+  home_builder:
+    display: Home Builder
+    sections:
+      -
+        display: Secciones Home
+        fields:
+          -
+            handle: sections
+            field:
+              type: replicator
+              display: Sections
+              collapse: false
+              fullscreen: false
+              sets:
+                home:
+                  display: Home
+                  sets:
+                    hero:
+                      display: Hero
+                      fields:
+                        -
+                          handle: eyebrow
+                          field:
+                            type: text
+                            display: Eyebrow
+                        -
+                          handle: title
+                          field:
+                            type: text
+                            display: Title
+                            required: true
+                        -
+                          handle: subtitle
+                          field:
+                            type: textarea
+                            display: Subtitle
+                        -
+                          handle: primary_cta_label
+                          field:
+                            type: text
+                            display: Primary CTA label
+                        -
+                          handle: primary_cta_url
+                          field:
+                            type: text
+                            display: Primary CTA URL
+                        -
+                          handle: secondary_cta_label
+                          field:
+                            type: text
+                            display: Secondary CTA label
+                        -
+                          handle: secondary_cta_url
+                          field:
+                            type: text
+                            display: Secondary CTA URL
+                    servicios:
+                      display: Servicios
+                      fields:
+                        -
+                          handle: heading
+                          field:
+                            type: text
+                            display: Heading
+                        -
+                          handle: items
+                          field:
+                            type: grid
+                            display: Items
+                            fields:
+                              -
+                                handle: title
+                                field:
+                                  type: text
+                                  display: Title
+                                  required: true
+                              -
+                                handle: description
+                                field:
+                                  type: textarea
+                                  display: Description
+                    rich_text:
+                      display: Texto enriquecido
+                      fields:
+                        -
+                          handle: eyebrow
+                          field:
+                            type: text
+                            display: Eyebrow
+                        -
+                          handle: heading
+                          field:
+                            type: text
+                            display: Heading
+                        -
+                          handle: body
+                          field:
+                            type: markdown
+                            display: Body
+                    pasos:
+                      display: Pasos
+                      fields:
+                        -
+                          handle: items
+                          field:
+                            type: grid
+                            display: Steps
+                            fields:
+                              -
+                                handle: step
+                                field:
+                                  type: text
+                                  display: Step label
+                              -
+                                handle: title
+                                field:
+                                  type: text
+                                  display: Title
+                              -
+                                handle: description
+                                field:
+                                  type: textarea
+                                  display: Description
+                    testimonios:
+                      display: Testimonios
+                      fields:
+                        -
+                          handle: heading
+                          field:
+                            type: text
+                            display: Heading
+                        -
+                          handle: items
+                          field:
+                            type: grid
+                            display: Testimonials
+                            fields:
+                              -
+                                handle: quote
+                                field:
+                                  type: textarea
+                                  display: Quote
+                              -
+                                handle: author
+                                field:
+                                  type: text
+                                  display: Author
+                    social_proof:
+                      display: Social Proof
+                      fields:
+                        -
+                          handle: metrics
+                          field:
+                            type: grid
+                            display: Metrics
+                            fields:
+                              -
+                                handle: value
+                                field:
+                                  type: text
+                                  display: Value
+                              -
+                                handle: label
+                                field:
+                                  type: text
+                                  display: Label
+                    faq:
+                      display: FAQ
+                      fields:
+                        -
+                          handle: heading
+                          field:
+                            type: text
+                            display: Heading
+                        -
+                          handle: items
+                          field:
+                            type: grid
+                            display: Questions
+                            fields:
+                              -
+                                handle: question
+                                field:
+                                  type: text
+                                  display: Question
+                              -
+                                handle: answer
+                                field:
+                                  type: textarea
+                                  display: Answer
+                    cta:
+                      display: CTA
+                      fields:
+                        -
+                          handle: eyebrow
+                          field:
+                            type: text
+                            display: Eyebrow
+                        -
+                          handle: heading
+                          field:
+                            type: text
+                            display: Heading
+                        -
+                          handle: description
+                          field:
+                            type: textarea
+                            display: Description
+                        -
+                          handle: cta_label
+                          field:
+                            type: text
+                            display: Button label
+                        -
+                          handle: cta_url
+                          field:
+                            type: text
+                            display: Button URL
+                    contact_form:
+                      display: Contact Form
+                      fields:
+                        -
+                          handle: eyebrow
+                          field:
+                            type: text
+                            display: Eyebrow
+                        -
+                          handle: heading
+                          field:
+                            type: text
+                            display: Heading
+                        -
+                          handle: form_handle
+                          field:
+                            type: text
+                            display: Form handle
+                            default: contacto
+                        -
+                          handle: submit_label
+                          field:
+                            type: text
+                            display: Submit label
+                            default: Enviar solicitud

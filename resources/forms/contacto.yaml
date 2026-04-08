@@ -1,0 +1,37 @@
+title: Contacto
+honeypot: website
+store: false
+email:
+  -
+    to: '{{ config:mail.from.address }}'
+    subject: 'Nueva solicitud de contacto'
+fields:
+  -
+    handle: nombre
+    field:
+      type: text
+      display: Nombre
+      validate:
+        - required
+  -
+    handle: email
+    field:
+      type: text
+      input_type: email
+      display: Email
+      validate:
+        - required
+        - email
+  - handle: telefono
+    field:
+      type: text
+      display: Telefono
+      validate:
+        - required
+  -
+    handle: mensaje
+    field:
+      type: textarea
+      display: Mensaje
+      validate:
+        - required

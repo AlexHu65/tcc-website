@@ -14,7 +14,6 @@
                 <a href="/" class="link-warm">Inicio</a>
                 <a href="/blog" class="link-warm">Recursos</a>
                 <a href="/#contacto" class="btn-warm rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide">Agenda hoy</a>
-                <a href="/cp" class="rounded-full border border-[#d2b186] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-brown-soft transition hover:bg-[#f2e5d6]">Admin</a>
             </nav>
         </div>
     </header>
