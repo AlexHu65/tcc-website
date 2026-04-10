@@ -18,6 +18,14 @@ tabs:
               type: textarea
               display: Excerpt
           -
+            handle: featured_image
+            field:
+              type: assets
+              display: 'Imagen destacada'
+              container: assets
+              max_files: 1
+              mode: grid
+          -
             handle: content
             field:
               type: markdown

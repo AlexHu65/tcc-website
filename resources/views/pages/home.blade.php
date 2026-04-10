@@ -27,10 +27,10 @@
                     {{ $block['subtitle'] ?? '' }}
                 </p>
                 <div class="mt-9 flex flex-wrap gap-3">
-                    <a href="{{ $block['primary_cta_url'] ?? '/blog' }}" class="btn-warm rounded-full px-5 py-3 text-sm font-semibold">
+                    <a href="{{ $block['primary_cta_url'] ?? '/blog' }}" class="btn-warm rounded-2xl px-6 py-3 text-sm font-semibold">
                         {{ $block['primary_cta_label'] ?? 'Explorar recursos' }}
                     </a>
-                    <a href="{{ $block['secondary_cta_url'] ?? '/#contacto' }}" class="rounded-full border border-[#d2b186] bg-white px-5 py-3 text-sm font-semibold text-brown-soft transition hover:bg-[#f4e8da]">
+                    <a href="{{ $block['secondary_cta_url'] ?? '/#contacto' }}" class="btn-ghost rounded-2xl px-6 py-3 text-sm font-semibold">
                         {{ $block['secondary_cta_label'] ?? 'Solicitar primera sesion' }}
                     </a>
                 </div>
@@ -82,7 +82,7 @@
                     <h4 class="title-serif mb-5 text-3xl text-brown">{{ $block['heading'] ?? 'Historias de cambio real' }}</h4>
                     <div class="space-y-5 text-brown-soft">
                         @foreach (($block['items'] ?? []) as $testimonial)
-                            <blockquote class="rounded-xl bg-[#fff8f0] p-4">
+                            <blockquote class="quote-soft">
                                 "{{ $testimonial['quote'] ?? '' }}"
                                 <footer class="mt-2 text-sm font-semibold text-brown">- {{ $testimonial['author'] ?? '' }}</footer>
                             </blockquote>
@@ -99,13 +99,13 @@
                     <h4 class="title-serif mb-5 text-3xl text-brown">{{ $block['heading'] ?? 'Agenda tu primera sesion' }}</h4>
 
                     @if (session('success'))
-                        <p class="mb-4 rounded-lg border border-[#c8ddb6] bg-[#edf7e4] px-4 py-3 text-sm text-[#36551f]">
+                        <p class="alert-banner alert-banner--success mb-4">
                             {{ session('success') }}
                         </p>
                     @endif
 
                     @if ($errors->any())
-                        <p class="mb-4 rounded-lg border border-[#e1c1b0] bg-[#fff1ea] px-4 py-3 text-sm text-[#7a3f22]">
+                        <p class="alert-banner alert-banner--error mb-4">
                             Revisa los datos del formulario e intenta de nuevo.
                         </p>
                     @endif
@@ -125,18 +125,18 @@
                             <div class="space-y-4">
                                 <div>
                                     <label for="nombre" class="mb-1 block text-sm font-medium text-brown">Nombre</label>
-                                    <input id="nombre" name="nombre" value="{{ old('nombre') }}" class="w-full rounded-xl border border-[#d9c2a3] bg-white px-4 py-3 text-sm text-brown outline-none transition focus:border-[#c18a3b]" required>
+                                    <input id="nombre" name="nombre" value="{{ old('nombre') }}" class="input-surface" required>
                                 </div>
                                 <div>
                                     <label for="telefono" class="mb-1 block text-sm font-medium text-brown">Telefono</label>
-                                    <input id="telefono" name="telefono" value="{{ old('telefono') }}" class="w-full rounded-xl border border-[#d9c2a3] bg-white px-4 py-3 text-sm text-brown outline-none transition focus:border-[#c18a3b]" required>
+                                    <input id="telefono" name="telefono" value="{{ old('telefono') }}" class="input-surface" required>
                                 </div>
                                 <div>
                                     <label for="email" class="mb-1 block text-sm font-medium text-brown">Email</label>
-                                    <input id="email" name="email" type="email" value="{{ old('email') }}" class="w-full rounded-xl border border-[#d9c2a3] bg-white px-4 py-3 text-sm text-brown outline-none transition focus:border-[#c18a3b]" required>
+                                    <input id="email" name="email" type="email" value="{{ old('email') }}" class="input-surface" required>
                                 </div>
                             </div>
-                            <button type="button" class="btn-warm mt-4 w-full rounded-full px-5 py-3 text-sm font-semibold" data-next-step>
+                            <button type="button" class="btn-warm mt-4 w-full rounded-2xl px-5 py-3 text-sm font-semibold" data-next-step>
                                 Continuar
                             </button>
                         </div>
@@ -145,13 +145,13 @@
                             <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-brown-soft">Paso 2 de 2</p>
                             <div>
                                 <label for="mensaje" class="mb-1 block text-sm font-medium text-brown">Mensaje</label>
-                                <textarea id="mensaje" name="mensaje" rows="4" class="w-full rounded-xl border border-[#d9c2a3] bg-white px-4 py-3 text-sm text-brown outline-none transition focus:border-[#c18a3b]" required>{{ old('mensaje') }}</textarea>
+                                <textarea id="mensaje" name="mensaje" rows="4" class="input-surface" required>{{ old('mensaje') }}</textarea>
                             </div>
                             <div class="mt-4 flex gap-3">
-                                <button type="button" class="w-1/2 rounded-full border border-[#d2b186] bg-white px-5 py-3 text-sm font-semibold text-brown-soft transition hover:bg-[#f4e8da]" data-prev-step>
+                                <button type="button" class="btn-ghost w-1/2 rounded-2xl px-5 py-3 text-sm font-semibold" data-prev-step>
                                     Volver
                                 </button>
-                                <button class="btn-warm w-1/2 rounded-full px-5 py-3 text-sm font-semibold">{{ $block['submit_label'] ?? 'Enviar solicitud' }}</button>
+                                <button class="btn-warm w-1/2 rounded-2xl px-5 py-3 text-sm font-semibold">{{ $block['submit_label'] ?? 'Enviar solicitud' }}</button>
                             </div>
                         </div>
                     </form>
@@ -177,7 +177,7 @@
                     <h4 class="title-serif mb-5 text-3xl text-brown">{{ $block['heading'] ?? 'Resolvemos tus dudas' }}</h4>
                     <div class="space-y-3">
                         @foreach (($block['items'] ?? []) as $faq)
-                            <details class="rounded-xl border border-[#e4cfb2] bg-[#fff8f0] p-4">
+                            <details class="faq-item">
                                 <summary class="cursor-pointer font-semibold text-brown">{{ $faq['question'] ?? '' }}</summary>
                                 <p class="mt-2 text-sm text-brown-soft">{{ $faq['answer'] ?? '' }}</p>
                             </details>
@@ -193,7 +193,7 @@
                     <p class="eyebrow mb-3">{{ $block['eyebrow'] ?? 'Siguiente paso' }}</p>
                     <h4 class="title-serif mb-4 text-3xl text-brown">{{ $block['heading'] ?? '' }}</h4>
                     <p class="mb-5 text-brown-soft">{{ $block['description'] ?? '' }}</p>
-                    <a href="{{ $block['cta_url'] ?? '/#contacto' }}" class="btn-warm inline-block rounded-full px-6 py-3 text-sm font-semibold">{{ $block['cta_label'] ?? 'Ir al formulario' }}</a>
+                    <a href="{{ $block['cta_url'] ?? '/#contacto' }}" class="btn-warm inline-block rounded-2xl px-6 py-3 text-sm font-semibold">{{ $block['cta_label'] ?? 'Ir al formulario' }}</a>
                 </article>
             </section>
         @endif
