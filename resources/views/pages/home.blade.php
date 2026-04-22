@@ -53,6 +53,10 @@
             </section>
         @endif
 
+        @if ($type === 'gallery')
+            @include('partials.home.gallery', ['block' => $block])
+        @endif
+
         @if ($type === 'rich_text')
             <section class="card-warm section-divider mb-14 rounded-3xl p-8 md:p-12">
                 <p class="eyebrow mb-3">{{ $block['eyebrow'] ?? 'Metodo de trabajo' }}</p>

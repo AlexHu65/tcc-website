@@ -1,4 +1,8 @@
 import './bootstrap';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { initGalleryCarousels } from './modules/gallery-carousel';
 
 const desktopStickyCta = document.getElementById('desktopStickyCta');
 if (desktopStickyCta) {
@@ -76,3 +80,5 @@ if (contactForm) {
         }
     });
 }
+
+initGalleryCarousels();

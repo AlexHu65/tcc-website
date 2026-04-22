@@ -223,6 +223,68 @@ tabs:
                                 field:
                                   type: textarea
                                   display: Answer
+                    gallery:
+                      display: Galeria
+                      fields:
+                        -
+                          handle: eyebrow
+                          field:
+                            type: text
+                            display: Eyebrow
+                        -
+                          handle: heading
+                          field:
+                            type: text
+                            display: Heading
+                        -
+                          handle: description
+                          field:
+                            type: textarea
+                            display: Description
+                        -
+                          handle: layout
+                          field:
+                            type: select
+                            display: Layout
+                            default: carousel
+                            options:
+                              carousel: Carrusel
+                              grid: Grid
+                              masonry: Masonry
+                        -
+                          handle: columns_desktop
+                          field:
+                            type: integer
+                            display: Columnas desktop
+                            default: 3
+                            min: 2
+                            max: 4
+                        -
+                          handle: items
+                          field:
+                            type: grid
+                            display: Items
+                            min_rows: 1
+                            fields:
+                              -
+                                handle: image
+                                field:
+                                  type: assets
+                                  display: Imagen
+                                  container: assets
+                                  max_files: 1
+                                  mode: list
+                                  reorderable: true
+                              -
+                                handle: title
+                                field:
+                                  type: text
+                                  display: Titulo
+                              -
+                                handle: alt_override
+                                field:
+                                  type: text
+                                  display: Alt override
                     cta:
                       display: CTA
                       fields:

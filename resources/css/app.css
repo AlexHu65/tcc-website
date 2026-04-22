@@ -160,6 +160,58 @@ textarea.input-surface {
     padding: 1.25rem 1.35rem;
 }
 
+.gallery-block {
+    position: relative;
+}
+
+.gallery-card,
+.gallery-grid-item,
+.gallery-masonry-item {
+    box-shadow: 0 8px 28px rgba(90, 63, 42, 0.08);
+}
+
+.gallery-image {
+    display: block;
+}
+
+.gallery-controls .swiper-button-prev,
+.gallery-controls .swiper-button-next {
+    background: rgba(255, 253, 249, 0.92);
+    border: 1px solid rgba(193, 138, 59, 0.28);
+    color: var(--color-brown);
+    box-shadow: 0 8px 22px rgba(90, 63, 42, 0.08);
+    transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.gallery-controls .swiper-button-prev:hover,
+.gallery-controls .swiper-button-next:hover {
+    transform: translateY(-1px);
+    background: #fff;
+}
+
+.gallery-controls .swiper-button-prev::after,
+.gallery-controls .swiper-button-next::after {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.gallery-controls .swiper-button-prev:focus-visible,
+.gallery-controls .swiper-button-next:focus-visible {
+    outline: 2px solid rgba(193, 138, 59, 0.75);
+    outline-offset: 2px;
+}
+
+.gallery-controls .swiper-pagination-bullet {
+    width: 0.55rem;
+    height: 0.55rem;
+    background: rgba(122, 90, 59, 0.35);
+    opacity: 1;
+}
+
+.gallery-controls .swiper-pagination-bullet-active {
+    background: var(--color-ochre);
+}
+
 .content-prose {
     line-height: 1.82;
     font-size: 1.05rem;
@@ -208,7 +260,9 @@ textarea.input-surface {
     .btn-warm,
     .btn-ghost,
     .card-warm,
-    .link-warm {
+    .link-warm,
+    .gallery-controls .swiper-button-prev,
+    .gallery-controls .swiper-button-next {
         animation: none !important;
         transition: none !important;
         transform: none !important;
