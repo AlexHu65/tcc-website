@@ -37,304 +37,602 @@ tabs:
     display: Home Builder
     sections:
       -
-        display: Secciones Home
+        display: Bloques del home (Hero, Enfoque, Servicios…)
         fields:
           -
             handle: sections
             field:
               type: replicator
               display: Sections
+              instructions: |
+                Editá aquí el contenido que ves en la web: cada bloque (Hero, Enfoque Ilse, Servicios Ilse, Sobre mí, Formulario de contacto).
+                Cabecera, pie de página, enlaces del menú y SEO están en la pestaña «Landing Ilse».
               collapse: false
               fullscreen: false
               sets:
-                home:
-                  display: Home
-                  sets:
-                    hero:
-                      display: Hero
-                      fields:
-                        -
-                          handle: eyebrow
-                          field:
-                            type: text
-                            display: Eyebrow
-                        -
-                          handle: title
-                          field:
-                            type: text
-                            display: Title
-                            required: true
-                        -
-                          handle: subtitle
-                          field:
-                            type: textarea
-                            display: Subtitle
-                        -
-                          handle: primary_cta_label
-                          field:
-                            type: text
-                            display: Primary CTA label
-                        -
-                          handle: primary_cta_url
-                          field:
-                            type: text
-                            display: Primary CTA URL
-                        -
-                          handle: secondary_cta_label
-                          field:
-                            type: text
-                            display: Secondary CTA label
-                        -
-                          handle: secondary_cta_url
-                          field:
-                            type: text
-                            display: Secondary CTA URL
-                    servicios:
-                      display: Servicios
-                      fields:
-                        -
-                          handle: heading
-                          field:
-                            type: text
-                            display: Heading
-                        -
-                          handle: items
-                          field:
-                            type: grid
-                            display: Items
-                            fields:
-                              -
-                                handle: title
-                                field:
-                                  type: text
-                                  display: Title
-                                  required: true
-                              -
-                                handle: description
-                                field:
-                                  type: textarea
-                                  display: Description
-                    rich_text:
-                      display: Texto enriquecido
-                      fields:
-                        -
-                          handle: eyebrow
-                          field:
-                            type: text
-                            display: Eyebrow
-                        -
-                          handle: heading
-                          field:
-                            type: text
-                            display: Heading
-                        -
-                          handle: body
-                          field:
-                            type: markdown
-                            display: Body
-                    pasos:
-                      display: Pasos
-                      fields:
-                        -
-                          handle: items
-                          field:
-                            type: grid
-                            display: Steps
-                            fields:
-                              -
-                                handle: step
-                                field:
-                                  type: text
-                                  display: Step label
-                              -
-                                handle: title
-                                field:
-                                  type: text
-                                  display: Title
-                              -
-                                handle: description
-                                field:
-                                  type: textarea
-                                  display: Description
-                    testimonios:
-                      display: Testimonios
-                      fields:
-                        -
-                          handle: heading
-                          field:
-                            type: text
-                            display: Heading
-                        -
-                          handle: items
-                          field:
-                            type: grid
-                            display: Testimonials
-                            fields:
-                              -
-                                handle: quote
-                                field:
-                                  type: textarea
-                                  display: Quote
-                              -
-                                handle: author
-                                field:
-                                  type: text
-                                  display: Author
-                    social_proof:
-                      display: Social Proof
-                      fields:
-                        -
-                          handle: metrics
-                          field:
-                            type: grid
-                            display: Metrics
-                            fields:
-                              -
-                                handle: value
-                                field:
-                                  type: text
-                                  display: Value
-                              -
-                                handle: label
-                                field:
-                                  type: text
-                                  display: Label
-                    faq:
-                      display: FAQ
-                      fields:
-                        -
-                          handle: heading
-                          field:
-                            type: text
-                            display: Heading
-                        -
-                          handle: items
-                          field:
-                            type: grid
-                            display: Questions
-                            fields:
-                              -
-                                handle: question
-                                field:
-                                  type: text
-                                  display: Question
-                              -
-                                handle: answer
-                                field:
-                                  type: textarea
-                                  display: Answer
-                    gallery:
-                      display: Galeria
-                      fields:
-                        -
-                          handle: eyebrow
-                          field:
-                            type: text
-                            display: Eyebrow
-                        -
-                          handle: heading
-                          field:
-                            type: text
-                            display: Heading
-                        -
-                          handle: description
-                          field:
-                            type: textarea
-                            display: Description
-                        -
-                          handle: layout
-                          field:
-                            type: select
-                            display: Layout
-                            default: carousel
-                            options:
-                              carousel: Carrusel
-                              grid: Grid
-                              masonry: Masonry
-                        -
-                          handle: columns_desktop
-                          field:
-                            type: integer
-                            display: Columnas desktop
-                            default: 3
-                            min: 2
-                            max: 4
-                        -
-                          handle: items
-                          field:
-                            type: grid
-                            display: Items
-                            min_rows: 1
-                            fields:
-                              -
-                                handle: image
-                                field:
-                                  type: assets
-                                  display: Imagen
-                                  container: assets
-                                  max_files: 1
-                                  mode: list
-                                  reorderable: true
-                              -
-                                handle: title
-                                field:
-                                  type: text
-                                  display: Titulo
-                              -
-                                handle: alt_override
-                                field:
-                                  type: text
-                                  display: Alt override
-                    cta:
-                      display: CTA
-                      fields:
-                        -
-                          handle: eyebrow
-                          field:
-                            type: text
-                            display: Eyebrow
-                        -
-                          handle: heading
-                          field:
-                            type: text
-                            display: Heading
-                        -
-                          handle: description
-                          field:
-                            type: textarea
-                            display: Description
-                        -
-                          handle: cta_label
-                          field:
-                            type: text
-                            display: Button label
-                        -
-                          handle: cta_url
-                          field:
-                            type: text
-                            display: Button URL
-                    contact_form:
-                      display: Contact Form
-                      fields:
-                        -
-                          handle: eyebrow
-                          field:
-                            type: text
-                            display: Eyebrow
-                        -
-                          handle: heading
-                          field:
-                            type: text
-                            display: Heading
-                        -
-                          handle: form_handle
-                          field:
-                            type: text
-                            display: Form handle
-                            default: contacto
-                        -
-                          handle: submit_label
-                          field:
-                            type: text
-                            display: Submit label
-                            default: Enviar solicitud
+                hero:
+                  display: Hero
+                  fields:
+                    -
+                      handle: eyebrow
+                      field:
+                        type: text
+                        display: Eyebrow
+                    -
+                      handle: title
+                      field:
+                        type: text
+                        display: Title
+                        instructions: 'Opcional si usas titulo partido (Ilse).'
+                    -
+                      handle: subtitle
+                      field:
+                        type: textarea
+                        display: Subtitle
+                        instructions: 'Intro debajo del titulo (hero clasico), o texto intro Ilse.'
+                    -
+                      handle: title_before
+                      field:
+                        type: text
+                        display: Titulo antes del enfasis (Ilse)
+                    -
+                      handle: title_emphasis
+                      field:
+                        type: text
+                        display: Titulo enfasis (Ilse)
+                    -
+                      handle: hero_image
+                      field:
+                        type: text
+                        display: Archivo imagen hero (public/images/ilse/)
+                        instructions: Nombre de archivo PNG/JPG dentro de public/images/ilse.
+                    -
+                      handle: image_alt
+                      field:
+                        type: text
+                        display: Alt imagen hero
+                    -
+                      handle: primary_cta_label
+                      field:
+                        type: text
+                        display: Primary CTA label
+                    -
+                      handle: primary_cta_url
+                      field:
+                        type: text
+                        display: Primary CTA URL
+                    -
+                      handle: secondary_cta_label
+                      field:
+                        type: text
+                        display: Secondary CTA label
+                    -
+                      handle: secondary_cta_url
+                      field:
+                        type: text
+                        display: Secondary CTA URL
+                servicios:
+                  display: Servicios
+                  fields:
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: items
+                      field:
+                        type: grid
+                        display: Items
+                        fields:
+                          -
+                            handle: title
+                            field:
+                              type: text
+                              display: Title
+                              required: true
+                          -
+                            handle: description
+                            field:
+                              type: textarea
+                              display: Description
+                rich_text:
+                  display: Texto enriquecido
+                  fields:
+                    -
+                      handle: eyebrow
+                      field:
+                        type: text
+                        display: Eyebrow
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: body
+                      field:
+                        type: markdown
+                        display: Body
+                pasos:
+                  display: Pasos
+                  fields:
+                    -
+                      handle: items
+                      field:
+                        type: grid
+                        display: Steps
+                        fields:
+                          -
+                            handle: step
+                            field:
+                              type: text
+                              display: Step label
+                          -
+                            handle: title
+                            field:
+                              type: text
+                              display: Title
+                          -
+                            handle: description
+                            field:
+                              type: textarea
+                              display: Description
+                testimonios:
+                  display: Testimonios
+                  fields:
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: items
+                      field:
+                        type: grid
+                        display: Testimonials
+                        fields:
+                          -
+                            handle: quote
+                            field:
+                              type: textarea
+                              display: Quote
+                          -
+                            handle: author
+                            field:
+                              type: text
+                              display: Author
+                social_proof:
+                  display: Social Proof
+                  fields:
+                    -
+                      handle: metrics
+                      field:
+                        type: grid
+                        display: Metrics
+                        fields:
+                          -
+                            handle: value
+                            field:
+                              type: text
+                              display: Value
+                          -
+                            handle: label
+                            field:
+                              type: text
+                              display: Label
+                faq:
+                  display: FAQ
+                  fields:
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: items
+                      field:
+                        type: grid
+                        display: Questions
+                        fields:
+                          -
+                            handle: question
+                            field:
+                              type: text
+                              display: Question
+                          -
+                            handle: answer
+                            field:
+                              type: textarea
+                              display: Answer
+                gallery:
+                  display: Galeria
+                  fields:
+                    -
+                      handle: eyebrow
+                      field:
+                        type: text
+                        display: Eyebrow
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: description
+                      field:
+                        type: textarea
+                        display: Description
+                    -
+                      handle: layout
+                      field:
+                        type: select
+                        display: Layout
+                        default: carousel
+                        options:
+                          carousel: Carrusel
+                          grid: Grid
+                          masonry: Masonry
+                    -
+                      handle: columns_desktop
+                      field:
+                        type: integer
+                        display: Columnas desktop
+                        default: 3
+                        min: 2
+                        max: 4
+                    -
+                      handle: items
+                      field:
+                        type: grid
+                        display: Items
+                        min_rows: 1
+                        fields:
+                          -
+                            handle: image
+                            field:
+                              type: assets
+                              display: Imagen
+                              container: assets
+                              max_files: 1
+                              mode: list
+                              reorderable: true
+                          -
+                            handle: title
+                            field:
+                              type: text
+                              display: Titulo
+                          -
+                            handle: alt_override
+                            field:
+                              type: text
+                              display: Alt override
+                cta:
+                  display: CTA
+                  fields:
+                    -
+                      handle: eyebrow
+                      field:
+                        type: text
+                        display: Eyebrow
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: description
+                      field:
+                        type: textarea
+                        display: Description
+                    -
+                      handle: cta_label
+                      field:
+                        type: text
+                        display: Button label
+                    -
+                      handle: cta_url
+                      field:
+                        type: text
+                        display: Button URL
+                contact_form:
+                  display: Contact Form
+                  fields:
+                    -
+                      handle: eyebrow
+                      field:
+                        type: text
+                        display: Eyebrow
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: intro_copy
+                      field:
+                        type: textarea
+                        display: Texto intro (debajo del titulo)
+                    -
+                      handle: show_contact_form
+                      field:
+                        type: toggle
+                        display: Mostrar formulario
+                        default: true
+                    -
+                      handle: form_handle
+                      field:
+                        type: text
+                        display: Form handle
+                        default: contacto
+                    -
+                      handle: step1_label
+                      field:
+                        type: text
+                        display: Label boton paso 1
+                        default: Continuar
+                    -
+                      handle: back_label
+                      field:
+                        type: text
+                        display: Label boton volver
+                        default: Volver
+                    -
+                      handle: submit_label
+                      field:
+                        type: text
+                        display: Submit label
+                        default: Enviar solicitud
+                    -
+                      handle: fallback_button_label
+                      field:
+                        type: text
+                        display: 'CTA solo boton: texto'
+                        default: Escríbeme
+                    -
+                      handle: fallback_button_url
+                      field:
+                        type: text
+                        display: 'CTA solo boton: URL'
+                        default: 'mailto:hola@ilsemendezpsico.com'
+                ilse_enfoque:
+                  display: 'Enfoque — titulo, texto y 4 tarjetas'
+                  fields:
+                    -
+                      handle: eyebrow
+                      field:
+                        type: text
+                        display: Eyebrow
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: copy
+                      field:
+                        type: textarea
+                        display: Copy
+                    -
+                      handle: items
+                      field:
+                        type: grid
+                        display: Bloques
+                        fields:
+                          -
+                            handle: icon
+                            field:
+                              type: text
+                              display: Icono
+                          -
+                            handle: title
+                            field:
+                              type: text
+                              display: Titulo
+                          -
+                            handle: description
+                            field:
+                              type: textarea
+                              display: Descripcion
+                servicios_ilse:
+                  display: 'Servicios — imagen lateral y etiquetas (pills)'
+                  fields:
+                    -
+                      handle: image
+                      field:
+                        type: text
+                        display: Archivo imagen (public/images/ilse/)
+                    -
+                      handle: image_alt
+                      field:
+                        type: text
+                        display: Alt imagen
+                    -
+                      handle: eyebrow
+                      field:
+                        type: text
+                        display: Eyebrow
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: copy
+                      field:
+                        type: textarea
+                        display: Copy
+                    -
+                      handle: pills
+                      field:
+                        type: grid
+                        display: Pills
+                        fields:
+                          -
+                            handle: label
+                            field:
+                              type: text
+                              display: Etiqueta
+                    -
+                      handle: cta_label
+                      field:
+                        type: text
+                        display: CTA label
+                    -
+                      handle: cta_url
+                      field:
+                        type: text
+                        display: CTA URL
+                sobre_mi:
+                  display: 'Sobre mi — parrafos e imagen'
+                  fields:
+                    -
+                      handle: eyebrow
+                      field:
+                        type: text
+                        display: Eyebrow
+                    -
+                      handle: heading
+                      field:
+                        type: text
+                        display: Heading
+                    -
+                      handle: paragraphs
+                      field:
+                        type: grid
+                        display: Parrafos
+                        fields:
+                          -
+                            handle: text
+                            field:
+                              type: textarea
+                              display: Texto
+                    -
+                      handle: image
+                      field:
+                        type: text
+                        display: Archivo imagen (public/images/ilse/)
+                    -
+                      handle: image_alt
+                      field:
+                        type: text
+                        display: Alt imagen
+                    -
+                      handle: cta_label
+                      field:
+                        type: text
+                        display: CTA label
+                    -
+                      handle: cta_url
+                      field:
+                        type: text
+                        display: CTA URL
+  ilse_landing:
+    display: Landing Ilse
+    sections:
+      -
+        display: SEO y marca
+        fields:
+          -
+            handle: ilse_meta_title
+            field:
+              type: text
+              display: Titulo del navegador
+          -
+            handle: ilse_meta_description
+            field:
+              type: textarea
+              display: Meta descripcion
+          -
+            handle: ilse_brand_title
+            field:
+              type: text
+              display: Nombre en cabecera
+          -
+            handle: ilse_brand_tagline
+            field:
+              type: text
+              display: Subtitulo de marca
+          -
+            handle: ilse_logo
+            field:
+              type: text
+              display: Archivo de logo (public/images/ilse/)
+              instructions: Nombre del archivo PNG en public/images/ilse; vacio usa el predeterminado.
+          -
+            handle: ilse_logo_alt
+            field:
+              type: text
+              display: Texto alternativo del logo
+      -
+        display: Navegacion
+        fields:
+          -
+            handle: ilse_nav_inicio
+            field:
+              type: text
+              display: Enlace Inicio
+          -
+            handle: ilse_nav_enfoque
+            field:
+              type: text
+              display: Enlace Enfoque
+          -
+            handle: ilse_nav_servicios
+            field:
+              type: text
+              display: Enlace Servicios
+          -
+            handle: ilse_nav_sobre
+            field:
+              type: text
+              display: Enlace Sobre mi
+          -
+            handle: ilse_nav_blog
+            field:
+              type: text
+              display: Etiqueta Recursos (blog)
+          -
+            handle: ilse_nav_contacto
+            field:
+              type: text
+              display: Enlace Contacto
+          -
+            handle: ilse_header_cta_label
+            field:
+              type: text
+              display: Boton CTA cabecera
+      -
+        display: Pie
+        fields:
+          -
+            handle: ilse_footer_blurb
+            field:
+              type: textarea
+              display: Texto bajo marca
+          -
+            handle: ilse_footer_sections_title
+            field:
+              type: text
+              display: Titulo columna secciones
+          -
+            handle: ilse_footer_contact_title
+            field:
+              type: text
+              display: Titulo columna contacto
+          -
+            handle: ilse_footer_contact_lines
+            field:
+              type: grid
+              display: Lineas de contacto
+              fields:
+                -
+                  handle: line
+                  field:
+                    type: text
+                    display: Linea
+          -
+            handle: ilse_copyright
+            field:
+              type: text
+              display: Copyright

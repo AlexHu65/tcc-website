@@ -4,6 +4,14 @@
     use App\Support\BlogImage;
 @endphp
 
+@section('meta_title')
+    {{ ($title ?? 'Blog').' | '.config('app.name') }}
+@endsection
+
+@section('meta_description')
+    {{ strip_tags($content ?? '') }}
+@endsection
+
 @section('content')
     <section class="fade-in-up mb-12 md:mb-14">
         <p class="eyebrow mb-3">Biblioteca de bienestar</p>

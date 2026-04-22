@@ -2,111 +2,107 @@
 id: home
 slug: /
 blueprint: pages
-title: Home
+title: Ilse Méndez
 template: pages/home
 sections:
   -
     type: hero
     enabled: true
-    eyebrow: Psicologia contemporanea
-    title: Un espacio seguro para reconectar contigo
-    subtitle: Te acompanamos con un enfoque profesional y humano para ayudarte a recuperar calma, claridad y equilibrio en cada etapa de tu proceso.
-    primary_cta_label: Explorar recursos
-    primary_cta_url: /blog
-    secondary_cta_label: Solicitar primera sesion
-    secondary_cta_url: /#contacto
+    eyebrow: 'Psicoterapia cognitivo conductual'
+    title_before: 'Comprender tu mente es el primer paso para '
+    title_emphasis: 'transformar tu vida.'
+    subtitle: 'Un espacio cálido, claro y profesional para acompañarte a entender lo que hoy vives, desarrollar nuevas herramientas y construir una vida con más bienestar emocional.'
+    hero_image: logo_design_on_a_clean_pale_beige_cream_backgroun.png
+    image_alt: 'Identidad visual Ilse Méndez — espacio sereno y profesional'
+    primary_cta_label: 'Agenda tu cita'
+    primary_cta_url: '#contacto'
+    secondary_cta_label: 'Conoce más'
+    secondary_cta_url: '#sobre-mi'
   -
-    type: servicios
+    type: ilse_enfoque
     enabled: true
-    heading: Especialidades
+    eyebrow: 'Un espacio para ti'
+    heading: 'Acompañamiento profesional, cálido y basado en evidencia.'
+    copy: 'La intención de esta landing es comunicar una experiencia de confianza: limpia, serena, clara y profundamente humana.'
     items:
       -
-        title: Terapia individual
-        description: Acompanamiento cercano para ansiedad, estres, duelos o transiciones personales.
+        icon: '🧠'
+        title: 'Basado en evidencia'
+        description: 'Herramientas terapéuticas con estructura, intención y objetivos claros.'
       -
-        title: Terapia de pareja
-        description: Mejora la comunicacion, fortalece acuerdos y recupera el vinculo emocional.
+        icon: '🌿'
+        title: 'Enfoque personalizado'
+        description: 'Cada proceso es distinto. La experiencia debe sentirse cercana y hecha a tu medida.'
       -
-        title: Orientacion familiar
-        description: Herramientas practicas para gestionar conflictos y crear dinamicas saludables.
+        icon: '🤍'
+        title: 'Acompañamiento empático'
+        description: 'Un tono que inspire confianza, contención y seguridad desde el primer vistazo.'
+      -
+        icon: '✨'
+        title: 'Crecimiento consciente'
+        description: 'Una identidad visual que refleje claridad, profundidad y transformación real.'
   -
-    type: rich_text
+    type: servicios_ilse
     enabled: true
-    eyebrow: Metodo de trabajo
-    heading: Un proceso claro, respetuoso y personalizado
-    body: |
-      Iniciamos con una valoracion inicial para comprender tu contexto emocional.
-
-      A partir de ahi, definimos objetivos terapeuticos realistas y accionables.
-
-      En cada sesion, ajustamos estrategias para que avances con claridad y sostenibilidad.
+    image: a_clean_logo_branding_design_on_a_soft_beige_cream.png
+    image_alt: 'Identidad visual — tonos beige y oliva'
+    eyebrow: '¿En qué puedo ayudarte?'
+    heading: 'Áreas de acompañamiento'
+    copy: 'Esta sección puede crecer más adelante con fichas, enlaces o páginas internas.'
+    pills:
+      - { label: Ansiedad }
+      - { label: 'Manejo del estrés' }
+      - { label: Autoestima }
+      - { label: 'Pensamientos negativos' }
+      - { label: 'Desregulación emocional' }
+      - { label: 'Desarrollo personal' }
+    cta_label: 'Ver disponibilidad'
+    cta_url: '#contacto'
   -
-    type: pasos
+    type: sobre_mi
     enabled: true
-    items:
+    eyebrow: 'Hola, soy Ilse'
+    heading: 'Mi compromiso es contigo.'
+    paragraphs:
       -
-        step: Paso 1
-        title: Primera llamada
-        description: Escuchamos tu contexto y definimos objetivos claros para iniciar el proceso con seguridad.
+        text: 'Esta propuesta de landing page parte de una identidad cálida, limpia y elegante, pensada para reflejar cercanía, preparación constante y una forma de acompañar con profundidad, estructura y sensibilidad.'
       -
-        step: Paso 2
-        title: Plan personalizado
-        description: Disenamos un plan terapeutico adaptado a tus necesidades emocionales y ritmo de vida.
-      -
-        step: Paso 3
-        title: Seguimiento continuo
-        description: Ajustamos herramientas y sesiones para que avances con estabilidad y resultados sostenibles.
-  -
-    type: testimonios
-    enabled: true
-    heading: Historias de cambio real
-    items:
-      -
-        quote: Volvi a dormir tranquila y a organizar mis emociones en pocas semanas.
-        author: Laura, 34 anos
-      -
-        quote: Aprendimos a comunicarnos sin herirnos. La terapia nos devolvio claridad.
-        author: Andrea y Miguel
+        text: 'La narrativa visual busca transmitir calma, confianza y profesionalismo sin perder humanidad. Menos clínico, más conexión real.'
+    image: a_clean_minimalist_logo_branding_design_on_a_pale.png
+    image_alt: 'Referencia gráfica de marca Ilse Méndez'
+    cta_label: 'Quiero comenzar'
+    cta_url: '#contacto'
   -
     type: contact_form
     enabled: true
-    eyebrow: Contacto
-    heading: Agenda tu primera sesion
+    eyebrow: 'Estoy aquí para acompañarte'
+    heading: 'Agenda tu cita'
+    intro_copy: 'Completa el formulario y te responderé lo antes posible.'
+    show_contact_form: true
     form_handle: contacto
-    submit_label: Enviar solicitud
-  -
-    type: social_proof
-    enabled: true
-    metrics:
-      -
-        value: '+350'
-        label: Sesiones acompanadas
-      -
-        value: 92%
-        label: Clientes que reportan mayor calma
-      -
-        value: <24h
-        label: Tiempo promedio de respuesta
-  -
-    type: faq
-    enabled: true
-    heading: Resolvemos tus dudas
-    items:
-      -
-        question: Cuanto dura una sesion?
-        answer: Las sesiones duran entre 50 y 60 minutos segun el plan terapeutico.
-      -
-        question: La terapia puede ser online?
-        answer: Si. Trabajamos en modalidad presencial y online con la misma estructura profesional.
-      -
-        question: En cuanto tiempo vere avances?
-        answer: Cada proceso es unico, pero generalmente se perciben cambios en las primeras semanas.
-  -
-    type: cta
-    enabled: true
-    eyebrow: Siguiente paso
-    heading: Empieza hoy tu proceso
-    description: Si ya identificas que necesitas apoyo, agenda una primera sesion y definimos juntas(os) la mejor ruta para ti.
-    cta_label: Ir al formulario
-    cta_url: /#contacto
+    step1_label: Continuar
+    back_label: Volver
+    submit_label: 'Enviar solicitud'
+    fallback_button_label: Escríbeme
+    fallback_button_url: 'mailto:hola@ilsemendezpsico.com'
+ilse_meta_title: 'Ilse Méndez | Psicoterapia Cognitivo Conductual'
+ilse_meta_description: 'Psicoterapia cognitivo conductual. Espacio cálido, claro y profesional para acompañarte.'
+ilse_brand_title: 'Ilse Méndez'
+ilse_brand_tagline: 'Psicoterapia Cognitivo Conductual'
+ilse_logo_alt: 'Logo de Ilse Méndez'
+ilse_nav_inicio: Inicio
+ilse_nav_enfoque: Enfoque
+ilse_nav_servicios: Servicios
+ilse_nav_sobre: 'Sobre mí'
+ilse_nav_blog: Recursos
+ilse_nav_contacto: Contacto
+ilse_header_cta_label: 'Agenda tu cita'
+ilse_footer_blurb: 'Base inicial para comenzar el desarrollo de la landing page con una línea visual limpia, sofisticada y emocionalmente cálida.'
+ilse_footer_sections_title: Secciones
+ilse_footer_contact_title: Contacto
+ilse_footer_contact_lines:
+  - { line: 'WhatsApp: pendiente de integrar' }
+  - { line: 'Email: hola@ilsemendezpsico.com' }
+  - { line: 'Sesiones presenciales y en línea' }
+ilse_copyright: '© 2026 Ilse Méndez. Archivo base para implementación visual.'
 ---

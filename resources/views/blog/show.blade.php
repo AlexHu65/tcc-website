@@ -9,6 +9,14 @@
     $heroImageUrl = BlogImage::heroUrl($blogEntry);
 @endphp
 
+@section('meta_title')
+    {{ ($title ?? 'Artículo').' | '.config('app.name') }}
+@endsection
+
+@section('meta_description')
+    {{ strip_tags($excerpt ?? '') }}
+@endsection
+
 @section('content')
     @php
         $publishedAt = ! empty($date) ? \Illuminate\Support\Carbon::parse($date)->format('d M Y') : null;

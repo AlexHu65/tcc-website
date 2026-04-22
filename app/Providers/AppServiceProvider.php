@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Events\FormSubmitted;
 use Statamic\Facades\CP\Nav;
+use Statamic\Facades\Entry;
 use Statamic\Facades\Nav as NavFacade;
 use Statamic\Facades\Site;
 
@@ -41,6 +42,24 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
             $view->with('mainNavPages', $pages);
+
+            $defaultLogoFile = 'a_minimalist_elegant_logo_brand_mark_on_a_pale_be.png';
+            $ilse_logo_asset = asset('images/ilse/'.$defaultLogoFile);
+
+            $home = Entry::find('home');
+            if ($home) {
+                foreach ($home->data()->all() as $key => $value) {
+                    if (str_starts_with((string) $key, 'ilse_')) {
+                        $view->with($key, $value);
+                    }
+                }
+                $logoFile = $home->get('ilse_logo');
+                if (is_string($logoFile) && $logoFile !== '') {
+                    $ilse_logo_asset = asset('images/ilse/'.$logoFile);
+                }
+            }
+
+            $view->with('ilse_logo_asset', $ilse_logo_asset);
         });
 
         Nav::extend(function ($nav) {

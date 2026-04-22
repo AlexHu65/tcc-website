@@ -44,6 +44,8 @@ return [
         'asset' => Asset::class,
     ],
 
+    // Blueprints en BD. Tras editar resources/blueprints/**/*.yaml en el repo,
+    // sincronizar: php please eloquent:import-blueprints
     'blueprints' => [
         'driver' => 'eloquent',
         'model' => BlueprintModel::class,
