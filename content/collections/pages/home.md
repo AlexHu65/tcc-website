@@ -1,5 +1,6 @@
 ---
 id: home
+slug: /
 blueprint: pages
 title: Home
 template: pages/home

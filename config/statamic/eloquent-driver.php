@@ -6,7 +6,7 @@ use Statamic\Eloquent\Assets\AssetContainerModel;
 use Statamic\Eloquent\Assets\AssetModel;
 use Statamic\Eloquent\Collections\CollectionModel;
 use Statamic\Eloquent\Entries\Entry;
-use Statamic\Eloquent\Entries\EntryModel;
+use Statamic\Eloquent\Entries\UuidEntryModel;
 use Statamic\Eloquent\Fields\BlueprintModel;
 use Statamic\Eloquent\Fields\FieldsetModel;
 use Statamic\Eloquent\Forms\FormModel;
@@ -34,44 +34,44 @@ return [
     ],
 
     'asset_containers' => [
-        'driver' => 'file',
+        'driver' => 'eloquent',
         'model' => AssetContainerModel::class,
     ],
 
     'assets' => [
-        'driver' => 'file',
+        'driver' => 'eloquent',
         'model' => AssetModel::class,
         'asset' => Asset::class,
     ],
 
     'blueprints' => [
-        'driver' => 'file',
+        'driver' => 'eloquent',
         'model' => BlueprintModel::class,
         'namespaces' => 'all',
     ],
 
     'collections' => [
-        'driver' => 'file',
+        'driver' => 'eloquent',
         'model' => CollectionModel::class,
         'update_entry_order_queue' => 'default',
         'update_entry_order_connection' => 'default',
     ],
 
     'collection_trees' => [
-        'driver' => 'file',
+        'driver' => 'eloquent',
         'model' => TreeModel::class,
         'tree' => CollectionTree::class,
     ],
 
     'entries' => [
-        'driver' => 'file',
-        'model' => EntryModel::class,
+        'driver' => 'eloquent',
+        'model' => UuidEntryModel::class,
         'entry' => Entry::class,
         'map_data_to_columns' => false,
     ],
 
     'fieldsets' => [
-        'driver' => 'file',
+        'driver' => 'eloquent',
         'model' => FieldsetModel::class,
     ],
 

@@ -109,7 +109,58 @@ npm run dev
 npm run build
 ```
 
-## 6) Checklist rapido para nuevos cambios en contenido
+## 6) Sprint abril 2026: Blog en base de datos (implementado)
+
+En este sprint se movio la persistencia del blog a Eloquent Driver para asegurar que entradas, imagen destacada y configuracion editorial queden en SQL.
+
+### Repositorios cambiados a `eloquent`
+
+- `entries`
+- `assets`
+- `asset_containers`
+- `collections`
+- `collection_trees`
+- `blueprints`
+- `fieldsets`
+
+Archivo de control:
+
+- `config/statamic/eloquent-driver.php`
+
+### Comando aplicado
+
+```bash
+php please install:eloquent-driver --repositories=entries,assets,asset_containers,collections,collection_trees,blueprints,fieldsets --import --no-interaction
+php artisan migrate
+php please stache:clear
+php please stache:warm
+php please eloquent:sync-assets
+```
+
+### Verificacion minima (BD)
+
+```bash
+php artisan tinker --execute="dump(DB::table('entries')->where('collection','blog')->select('id','collection','slug','data')->first()); dump(DB::table('assets_meta')->select('container','path')->first());"
+```
+
+Esperado:
+
+- Registro en `entries` para `collection = blog`.
+- En `data` debe aparecer `featured_image`.
+- Registro relacionado en `assets_meta` con `container = assets`.
+
+### Rollback rapido a archivos (si se requiere)
+
+```bash
+php please eloquent:export-entries
+php please eloquent:export-assets
+php please eloquent:export-collections
+php please eloquent:export-blueprints
+```
+
+Luego actualizar `config/statamic/eloquent-driver.php` de regreso a `driver: file` para los repositorios necesarios y refrescar stache.
+
+## 7) Checklist rapido para nuevos cambios en contenido
 
 1. Confirmar blueprint en `resources/blueprints/...`.
 2. Crear/editar entrada desde CP o en `content/collections/...`.

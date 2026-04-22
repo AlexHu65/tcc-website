@@ -14,6 +14,7 @@ Sitio web de marketing/blog administrado con Statamic sobre Laravel, con Home 10
 
 - Home administrable desde Statamic mediante `Replicator` (secciones dinámicas).
 - Blog y páginas administrables desde el CP.
+- Blog persistido en base de datos con Eloquent Driver (entries, assets, collections y blueprints).
 - Formulario de contacto en Home usando Statamic Forms.
 - Datos sensibles de contacto cifrados en base de datos (no se almacenan en plano).
 - Vista interna en CP para consultar submissions sensibles.

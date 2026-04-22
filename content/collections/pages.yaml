@@ -1,6 +1,6 @@
 title: Pages
-route: '{parent_uri}/{slug}'
-slugs: true
+route: '/{slug?}'
+slugs: false
 date: false
 dated: false
 mount: null

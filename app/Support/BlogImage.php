@@ -19,15 +19,41 @@ final class BlogImage
             return null;
         }
 
-        $ids = is_array($raw) ? $raw : [$raw];
-        $id = collect($ids)->filter()->first();
-        if (! $id) {
+        $ids = collect(is_array($raw) ? $raw : [$raw])
+            ->filter(fn ($value) => is_string($value) && $value !== '')
+            ->values();
+
+        foreach ($ids as $id) {
+            $asset = self::findAssetByLegacyOrCurrentId($id);
+
+            if ($asset && $asset->isImage()) {
+                return $asset;
+            }
+        }
+
+        return null;
+    }
+
+    private static function findAssetByLegacyOrCurrentId(string $id): ?AssetContract
+    {
+        $id = trim($id);
+        if ($id === '') {
             return null;
         }
 
-        $asset = Asset::find($id);
+        $candidates = str_contains($id, '::')
+            ? [$id]
+            : [$id, 'assets::'.$id];
 
-        return $asset && $asset->isImage() ? $asset : null;
+        foreach ($candidates as $candidate) {
+            $asset = Asset::find($candidate);
+
+            if ($asset) {
+                return $asset;
+            }
+        }
+
+        return null;
     }
 
     public static function cardUrl(?EntryContract $entry): ?string
