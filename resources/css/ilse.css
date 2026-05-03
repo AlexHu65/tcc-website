@@ -77,7 +77,8 @@ a {
 
 .btn.secondary {
     background: transparent;
-    color: var(--olive-dark);
+    /*color: var(--olive-dark);*/
+    background-color: var(--olive-dark);
     border-color: var(--line);
 }
 
@@ -559,7 +560,6 @@ footer .footer-cta:focus-visible {
 }
 
 .visual-card {
-    padding: 20px;
     overflow: hidden;
 }
 
@@ -677,6 +677,8 @@ section {
     color: var(--muted);
     line-height: 1.85;
     margin: 0 0 18px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .photo-frame {
