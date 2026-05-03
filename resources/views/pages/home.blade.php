@@ -26,19 +26,59 @@
 
         @if ($type === 'hero')
             @php
-                $isIlseHero = (($block['hero_image'] ?? '') !== '')
-                    || (($block['title_before'] ?? '') !== '' && ($block['title_emphasis'] ?? '') !== '');
-            @endphp
-            @if ($isIlseHero)
-                @php
-                    $heroImg = $ilseAsset($block['hero_image'] ?? null, 'logo_design_on_a_clean_pale_beige_cream_backgroun.png');
+                    $defaultHeroFile = 'logo_design_on_a_clean_pale_beige_cream_backgroun.png';
+                    $resolvedHeroUrl = \App\Support\IlseHeroBlock::imageUrl(
+                        $block['hero_image'] ?? null,
+                        fn (string $file) => $ilseAsset($file, $defaultHeroFile)
+                    );
+                    $includeImageToggle = filter_var(
+                        $block['hero_include_image'] ?? true,
+                        FILTER_VALIDATE_BOOLEAN,
+                        FILTER_NULL_ON_FAILURE
+                    );
+                    if ($includeImageToggle === null) {
+                        $includeImageToggle = true;
+                    }
+                    $showHeroImage = $includeImageToggle && $resolvedHeroUrl !== null;
+                    $colsRaw = $block['hero_columns_desktop'] ?? '2';
+                    $cols = match (true) {
+                        in_array($colsRaw, [1, '1'], true) => '1',
+                        in_array($colsRaw, [2, '2'], true) => '2',
+                        default => '2',
+                    };
+                    $imageSide = ($block['hero_image_side'] ?? 'right') === 'left' ? 'left' : 'right';
+                    $titleSize = $block['hero_title_size'] ?? 'default';
+                    $titleSizeClass = in_array($titleSize, ['large', 'xl'], true) ? ' hero-heading--'.$titleSize : '';
+                    $stacked = $cols === '1' && $showHeroImage;
+                    $splitTwoCols = $cols === '2' && $showHeroImage;
+                    $heroSectionClass = 'hero';
+                    if ($stacked) {
+                        $heroSectionClass .= ' hero--layout-stack';
+                    } elseif ($splitTwoCols) {
+                        $heroSectionClass .= ' hero--layout-split';
+                    } else {
+                        $heroSectionClass .= ' hero--layout-text-only';
+                    }
                     $emphasis = $block['title_emphasis'] ?? 'transformar tu vida.';
-                @endphp
-                <section class="hero" id="inicio">
-                    <div class="container hero-grid">
-                        <article class="hero-card">
+                    $heroContentFullWidth = ! $showHeroImage;
+            @endphp
+            <section class="{{ $heroSectionClass }}" id="inicio">
+                    <div class="container {{ $stacked ? 'hero-stack' : 'hero-grid'.(!$showHeroImage ? ' hero-grid--single hero-inner--full' : '') }}">
+                        @if ($stacked && $showHeroImage)
+                            <aside class="visual-card visual-card--stack-top">
+                                <img src="{{ $resolvedHeroUrl }}" alt="{{ $block['image_alt'] ?? 'Identidad visual' }}" loading="eager" decoding="async" />
+                            </aside>
+                        @endif
+
+                        @if ($splitTwoCols && $showHeroImage && $imageSide === 'left')
+                            <aside class="visual-card">
+                                <img src="{{ $resolvedHeroUrl }}" alt="{{ $block['image_alt'] ?? 'Identidad visual' }}" loading="eager" decoding="async" />
+                            </aside>
+                        @endif
+
+                        <article class="hero-card{{ $heroContentFullWidth ? ' hero-card--full' : '' }}">
                             <div class="eyebrow">{{ $block['eyebrow'] ?? 'Psicoterapia cognitivo conductual' }}</div>
-                            <h2>
+                            <h2 class="hero-heading{{ $titleSizeClass }}">
                                 {{ $block['title_before'] ?? '' }}@if(($block['title_emphasis'] ?? '') !== '')<span>{{ $block['title_emphasis'] }}</span>@elseif(($block['title'] ?? '') !== '')<span>{{ $block['title'] }}</span>@else<span>{{ $emphasis }}</span>@endif
                             </h2>
                             <p>{{ $block['subtitle'] ?? '' }}</p>
@@ -48,26 +88,13 @@
                             </div>
                         </article>
 
-                        <aside class="visual-card">
-                            <img src="{{ $heroImg }}" alt="{{ $block['image_alt'] ?? 'Identidad visual' }}" />
-                        </aside>
+                        @if ($splitTwoCols && $showHeroImage && $imageSide === 'right')
+                            <aside class="visual-card">
+                                <img src="{{ $resolvedHeroUrl }}" alt="{{ $block['image_alt'] ?? 'Identidad visual' }}" loading="eager" decoding="async" />
+                            </aside>
+                        @endif
                     </div>
-                </section>
-            @else
-                <section class="hero home-legacy-hero">
-                    <div class="container">
-                        <article class="hero-card">
-                            <div class="eyebrow">{{ $block['eyebrow'] ?? 'Psicologia contemporanea' }}</div>
-                            <h2>{{ $block['title'] ?? $title ?? '' }}</h2>
-                            <p>{{ $block['subtitle'] ?? '' }}</p>
-                            <div class="hero-actions">
-                                <a class="btn" href="{{ $block['primary_cta_url'] ?? '/blog' }}">{{ $block['primary_cta_label'] ?? 'Explorar recursos' }}</a>
-                                <a class="btn secondary" href="{{ $block['secondary_cta_url'] ?? '/#contacto' }}">{{ $block['secondary_cta_label'] ?? 'Solicitar primera sesion' }}</a>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-            @endif
+            </section>
         @endif
 
         @if ($type === 'ilse_enfoque')
@@ -94,7 +121,11 @@
 
         @if ($type === 'servicios_ilse')
             @php
-                $serviciosImg = $ilseAsset($block['image'] ?? null, 'a_clean_logo_branding_design_on_a_soft_beige_cream.png');
+                $serviciosResolved = \App\Support\IlseHeroBlock::imageUrl(
+                    $block['image'] ?? null,
+                    fn (string $file) => $ilseAsset($file, 'a_clean_logo_branding_design_on_a_soft_beige_cream.png')
+                );
+                $serviciosImg = $serviciosResolved ?? $ilseAsset(null, 'a_clean_logo_branding_design_on_a_soft_beige_cream.png');
             @endphp
             <section id="servicios">
                 <div class="container split">
@@ -119,7 +150,11 @@
 
         @if ($type === 'sobre_mi')
             @php
-                $sobreImg = $ilseAsset($block['image'] ?? null, 'a_clean_minimalist_logo_branding_design_on_a_pale.png');
+                $sobreResolved = \App\Support\IlseHeroBlock::imageUrl(
+                    $block['image'] ?? null,
+                    fn (string $file) => $ilseAsset($file, 'a_clean_minimalist_logo_branding_design_on_a_pale.png')
+                );
+                $sobreImg = $sobreResolved ?? $ilseAsset(null, 'a_clean_minimalist_logo_branding_design_on_a_pale.png');
                 $paras = $block['paragraphs'] ?? [];
             @endphp
             <section id="sobre-mi">

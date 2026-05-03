@@ -7,8 +7,9 @@
     <meta name="description" content="@yield('meta_description', $ilse_meta_description ?? '')">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/css/ilse.css', 'resources/js/app.js'])
+    @stack('styles')
 </head>
 <body class="ilse-shell">
     @include('partials.layout.ilse-header')
@@ -18,5 +19,8 @@
     </main>
 
     @include('partials.layout.ilse-footer')
+    @include('partials.layout.ilse-social-float')
+
+    @stack('scripts')
 </body>
 </html>

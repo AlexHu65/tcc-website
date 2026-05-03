@@ -1,0 +1,205 @@
+/*
+ * Bienestar / cuestionario: alinea con ilse.css (tokens, tarjetas, botones).
+ * Solo lo específico del layout del check-in y fotos.
+ */
+
+.cuestionario-page {
+    scroll-margin-top: 1rem;
+}
+
+/* Evita doble aire: inner-page-main ya aporta padding superior */
+.inner-page-main .cuestionario-page .hero.bienestar-hero {
+    padding-top: 28px;
+    padding-bottom: 36px;
+}
+
+.cuestionario-page .hero--layout-split .hero-card p {
+    max-width: 560px;
+}
+
+/* Columna imagen + cita */
+.cuestionario-page .bienestar-hero-aside {
+    padding: 20px;
+}
+
+.cuestionario-page .bienestar-hero-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.cuestionario-page .bienestar-hero-photo--placeholder {
+    background: linear-gradient(135deg, var(--surface-2), rgba(141, 141, 112, 0.35));
+}
+
+.cuestionario-page .bienestar-quote {
+    margin-top: 18px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.cuestionario-page .bienestar-quote-label {
+    margin-bottom: 10px;
+}
+
+.cuestionario-page .bienestar-quote-text {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--text);
+}
+
+.cuestionario-page .bienestar-quote-support {
+    margin: 12px 0 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+/* About: quitar min-height rígido del content-block */
+.cuestionario-page .bienestar-about-body-wrap {
+    min-height: 0;
+}
+
+.cuestionario-page .bienestar-about-body-wrap .bienestar-bard :where(p, ul, ol) {
+    margin: 0 0 1rem;
+}
+
+.cuestionario-page .bienestar-about-body-wrap .bienestar-bard {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.cuestionario-page .bienestar-focus-grid {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+/* Check-in */
+.cuestionario-page .bienestar-checkin-card {
+    text-align: left;
+}
+
+.cuestionario-page .checkin-header {
+    display: grid;
+    grid-template-columns: 1fr minmax(200px, 0.85fr);
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 28px;
+}
+
+.cuestionario-page .bienestar-instructions {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.cuestionario-page .bienestar-question {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin: 0 0 14px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.cuestionario-page .bienestar-question legend {
+    font-weight: 600;
+    color: var(--text);
+    padding: 0 6px;
+}
+
+.cuestionario-page .bienestar-option-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.cuestionario-page .bienestar-option-grid label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.35;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.cuestionario-page .bienestar-option-grid label:hover {
+    border-color: rgba(184, 148, 115, 0.45);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.cuestionario-page .bienestar-option-grid input {
+    margin-top: 3px;
+}
+
+.cuestionario-page .bienestar-form-actions {
+    margin-top: 24px;
+}
+
+.cuestionario-page .bienestar-result {
+    margin-top: 24px;
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    background: rgba(141, 141, 112, 0.14);
+    border: 1px solid rgba(216, 204, 192, 0.85);
+    color: var(--text);
+    line-height: 1.75;
+    text-align: left;
+}
+
+.cuestionario-page .bienestar-result.alert {
+    background: #fff8f6;
+    border-color: #e8c4bc;
+}
+
+.cuestionario-page .bienestar-disclaimer {
+    margin-top: 20px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* CTA final: título blanco sobre gradiente (cta-card) */
+.cuestionario-page .bienestar-final-inner .section-title {
+    color: #fff;
+}
+
+.cuestionario-page .bienestar-final-inner {
+    max-width: 720px;
+    margin-inline: auto;
+}
+
+@media (max-width: 1024px) {
+    .cuestionario-page .checkin-header {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .cuestionario-page .bienestar-option-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .cuestionario-page .bienestar-option-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cuestionario-page .service-list.bienestar-checkin-card {
+        padding: 24px;
+    }
+}

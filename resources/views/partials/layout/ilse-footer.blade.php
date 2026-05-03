@@ -7,7 +7,6 @@
         <div class="footer-card">
             <div>
                 <div class="footer-brand">
-                    <img src="{{ $ilse_logo_asset }}" alt="{{ $ilse_logo_alt ?? 'Logo de Ilse Méndez' }}" width="88" height="88" />
                     <div>
                         <h3 style="margin:0; font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500;">{{ $ilse_brand_title ?? 'Ilse Méndez' }}</h3>
                         <p style="margin:4px 0 0;">{{ $ilse_brand_tagline ?? 'Psicoterapia Cognitivo Conductual' }}</p>
@@ -18,11 +17,14 @@
 
             <div class="footer-links">
                 <div class="footer-title">{{ $ilse_footer_sections_title ?? 'Secciones' }}</div>
-                <a href="/#inicio">{{ $ilse_nav_inicio ?? 'Inicio' }}</a>
-                <a href="/#enfoque">{{ $ilse_nav_enfoque ?? 'Enfoque' }}</a>
-                <a href="/#servicios">{{ $ilse_nav_servicios ?? 'Servicios' }}</a>
-                <a href="/#sobre-mi">{{ $ilse_nav_sobre ?? 'Sobre mí' }}</a>
-                <a href="/blog">{{ $ilse_nav_blog ?? 'Recursos' }}</a>
+                <nav class="menu menu--footer" aria-label="{{ $ilse_footer_sections_title ?? 'Secciones' }}">
+                    <a class="menu-link--home" href="/#inicio">{{ $ilse_nav_inicio ?? 'Inicio' }}</a>
+                    <a href="/#enfoque">{{ $ilse_nav_enfoque ?? 'Enfoque' }}</a>
+                    <a href="/#servicios">{{ $ilse_nav_servicios ?? 'Servicios' }}</a>
+                    <a href="/#sobre-mi">{{ $ilse_nav_sobre ?? 'Sobre mí' }}</a>
+                    <a href="/blog">{{ $ilse_nav_blog ?? 'Recursos' }}</a>
+                    <a href="{{ route('bienestar') }}">{{ $ilse_nav_bienestar ?? 'Bienestar' }}</a>
+                </nav>
             </div>
 
             <div class="footer-contact">
@@ -34,6 +36,8 @@
                     <span>{{ $ilse_footer_email_line ?? 'Email: hola@ilsemendezpsico.com' }}</span>
                     <span>{{ $ilse_footer_modalidad_line ?? 'Sesiones presenciales y en línea' }}</span>
                 @endforelse
+                <a class="btn nav-cta footer-cta" href="/#contacto">{{ $ilse_header_cta_label ?? 'Agenda tu cita' }}</a>
+
             </div>
         </div>
         <div class="copyright">{{ $ilse_copyright ?? '© 2026 Ilse Méndez. Archivo base para implementación visual.' }}</div>

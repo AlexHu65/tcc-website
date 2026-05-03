@@ -82,3 +82,100 @@ if (contactForm) {
 }
 
 initGalleryCarousels();
+
+const navToggle = document.querySelector('.nav-toggle');
+const mainNav = document.getElementById('main-nav');
+if (navToggle && mainNav) {
+    const setNavOpen = (open) => {
+        mainNav.classList.toggle('is-open', open);
+        navToggle.setAttribute('aria-expanded', open);
+        navToggle.setAttribute(
+            'aria-label',
+            open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'
+        );
+    };
+
+    navToggle.addEventListener('click', () => {
+        setNavOpen(!mainNav.classList.contains('is-open'));
+    });
+
+    mainNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setNavOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            setNavOpen(false);
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) {
+            setNavOpen(false);
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (window.innerWidth > 1024 || !mainNav.classList.contains('is-open')) {
+            return;
+        }
+        const target = event.target;
+        if (
+            target instanceof Node &&
+            (navToggle.contains(target) || mainNav.contains(target))
+        ) {
+            return;
+        }
+        setNavOpen(false);
+    });
+}
+
+const ilseSocialFloat = document.querySelector('[data-ilse-social-float]');
+if (ilseSocialFloat) {
+    const toggle = ilseSocialFloat.querySelector('[data-ilse-social-float-toggle]');
+    const menu = ilseSocialFloat.querySelector('#ilse-social-float-menu');
+    const links = menu?.querySelectorAll('a') ?? [];
+
+    const setOpen = (open) => {
+        ilseSocialFloat.classList.toggle('is-open', open);
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', open);
+            toggle.setAttribute(
+                'aria-label',
+                open ? 'Cerrar enlaces a redes sociales' : 'Abrir enlaces a redes sociales'
+            );
+        }
+        if (menu) {
+            menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+        links.forEach((a) => {
+            if (open) {
+                a.removeAttribute('tabindex');
+            } else {
+                a.setAttribute('tabindex', '-1');
+            }
+        });
+    };
+
+    toggle?.addEventListener('click', () => {
+        setOpen(!ilseSocialFloat.classList.contains('is-open'));
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!ilseSocialFloat.classList.contains('is-open')) {
+            return;
+        }
+        const target = event.target;
+        if (target instanceof Node && ilseSocialFloat.contains(target)) {
+            return;
+        }
+        setOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && ilseSocialFloat.classList.contains('is-open')) {
+            setOpen(false);
+            toggle?.focus();
+        }
+    });
+}
