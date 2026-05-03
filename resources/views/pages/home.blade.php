@@ -65,18 +65,18 @@
             <section class="{{ $heroSectionClass }}" id="inicio">
                     <div class="container {{ $stacked ? 'hero-stack' : 'hero-grid'.(!$showHeroImage ? ' hero-grid--single hero-inner--full' : '') }}">
                         @if ($stacked && $showHeroImage)
-                            <aside class="visual-card visual-card--stack-top">
+                            <aside class="visual-card visual-card--stack-top" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ $resolvedHeroUrl }}" alt="{{ $block['image_alt'] ?? 'Identidad visual' }}" loading="eager" decoding="async" />
                             </aside>
                         @endif
 
                         @if ($splitTwoCols && $showHeroImage && $imageSide === 'left')
-                            <aside class="visual-card">
+                            <aside class="visual-card" data-aos="fade-right" data-aos-duration="800">
                                 <img src="{{ $resolvedHeroUrl }}" alt="{{ $block['image_alt'] ?? 'Identidad visual' }}" loading="eager" decoding="async" />
                             </aside>
                         @endif
 
-                        <article class="hero-card{{ $heroContentFullWidth ? ' hero-card--full' : '' }}">
+                        <article class="hero-card{{ $heroContentFullWidth ? ' hero-card--full' : '' }}" data-aos="fade-up" data-aos-duration="750">
                             <div class="eyebrow">{{ $block['eyebrow'] ?? 'Psicoterapia cognitivo conductual' }}</div>
                             <h2 class="hero-heading{{ $titleSizeClass }}">
                                 {{ $block['title_before'] ?? '' }}@if(($block['title_emphasis'] ?? '') !== '')<span>{{ $block['title_emphasis'] }}</span>@elseif(($block['title'] ?? '') !== '')<span>{{ $block['title'] }}</span>@else<span>{{ $emphasis }}</span>@endif
@@ -89,7 +89,7 @@
                         </article>
 
                         @if ($splitTwoCols && $showHeroImage && $imageSide === 'right')
-                            <aside class="visual-card">
+                            <aside class="visual-card" data-aos="fade-left" data-aos-duration="800">
                                 <img src="{{ $resolvedHeroUrl }}" alt="{{ $block['image_alt'] ?? 'Identidad visual' }}" loading="eager" decoding="async" />
                             </aside>
                         @endif
@@ -100,7 +100,7 @@
         @if ($type === 'ilse_enfoque')
             <section id="enfoque">
                 <div class="container">
-                    <div class="section-head">
+                    <div class="section-head" data-aos="fade-up">
                         <div class="eyebrow">{{ $block['eyebrow'] ?? '' }}</div>
                         <h3 class="section-title">{{ $block['heading'] ?? '' }}</h3>
                         <p class="section-copy">{{ $block['copy'] ?? '' }}</p>
@@ -108,7 +108,7 @@
 
                     <div class="grid-4">
                         @foreach (($block['items'] ?? []) as $benefit)
-                            <article class="content-block">
+                            <article class="content-block" data-aos="fade-up" data-aos-delay="{{ $loop->index * 90 }}">
                                 <div class="icon">{{ $benefit['icon'] ?? '✨' }}</div>
                                 <h4>{{ $benefit['title'] ?? '' }}</h4>
                                 <p>{{ $benefit['description'] ?? '' }}</p>
@@ -129,11 +129,11 @@
             @endphp
             <section id="servicios">
                 <div class="container split">
-                    <div class="photo-frame">
+                    <div class="photo-frame" data-aos="fade-right" data-aos-duration="800">
                         <img src="{{ $serviciosImg }}" alt="{{ $block['image_alt'] ?? '' }}" />
                     </div>
 
-                    <article class="service-list">
+                    <article class="service-list" data-aos="fade-up" data-aos-delay="80">
                         <div class="eyebrow">{{ $block['eyebrow'] ?? '' }}</div>
                         <h3 class="section-title">{{ $block['heading'] ?? '' }}</h3>
                         <p class="section-copy">{{ $block['copy'] ?? '' }}</p>
@@ -159,7 +159,7 @@
             @endphp
             <section id="sobre-mi">
                 <div class="container">
-                    <article class="about-card">
+                    <article class="about-card" data-aos="fade-up">
                         <div class="about-inner">
                             <div>
                                 <div class="eyebrow">{{ $block['eyebrow'] ?? '' }}</div>
@@ -183,7 +183,7 @@
         @endif
 
         @if ($type === 'servicios')
-            <section class="home-block-spaced">
+            <section class="home-block-spaced" data-aos="fade-up">
                 <div class="container">
                     @if (!empty($block['heading']))
                         <div class="section-head">
@@ -203,7 +203,7 @@
         @endif
 
         @if ($type === 'gallery')
-            <section class="home-block-spaced">
+            <section class="home-block-spaced" data-aos="fade-up">
                 <div class="container">
                     @include('partials.home.gallery', ['block' => $block])
                 </div>
@@ -211,7 +211,7 @@
         @endif
 
         @if ($type === 'rich_text')
-            <section class="home-block-spaced">
+            <section class="home-block-spaced" data-aos="fade-up">
                 <div class="container">
                     <article class="about-card">
                         <div class="eyebrow">{{ $block['eyebrow'] ?? 'Metodo de trabajo' }}</div>
@@ -229,7 +229,7 @@
                 <div class="container">
                     <div class="grid-4">
                         @foreach (($block['items'] ?? []) as $step)
-                            <article class="content-block">
+                            <article class="content-block" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                                 <p class="eyebrow">{{ $step['step'] ?? 'Paso' }}</p>
                                 <h4>{{ $step['title'] ?? '' }}</h4>
                                 <p>{{ $step['description'] ?? '' }}</p>
@@ -241,7 +241,7 @@
         @endif
 
         @if ($type === 'testimonios')
-            <section class="home-block-spaced">
+            <section class="home-block-spaced" data-aos="fade-up">
                 <div class="container">
                     <article class="cta-card">
                         <div class="eyebrow">Testimonios</div>
@@ -268,7 +268,7 @@
             <section id="contacto">
                 <div class="container">
                     @if ($showForm)
-                        <article class="cta-card cta-card--form">
+                        <article class="cta-card cta-card--form" data-aos="fade-up">
                             <div class="eyebrow">{{ $block['eyebrow'] ?? 'Contacto' }}</div>
                             <h3 class="ilse-form-title">{{ $block['heading'] ?? 'Agenda tu cita' }}</h3>
                             @if (!empty($block['intro_copy']))
@@ -319,7 +319,7 @@
                             </form>
                         </article>
                     @else
-                        <article class="cta-card">
+                        <article class="cta-card" data-aos="fade-up">
                             <div class="eyebrow">{{ $block['eyebrow'] ?? '' }}</div>
                             <h3>{{ $block['heading'] ?? '' }}</h3>
                             <p>{{ $block['intro_copy'] ?? '' }}</p>
@@ -335,7 +335,7 @@
                 <div class="container">
                     <div class="grid-4">
                         @foreach (($block['metrics'] ?? []) as $metric)
-                            <article class="content-block" style="text-align: center;">
+                            <article class="content-block" style="text-align: center;" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
                                 <p class="section-title" style="font-size: 2.5rem; margin-bottom: 8px;">{{ $metric['value'] ?? '' }}</p>
                                 <p style="color: var(--muted); font-size: 0.9rem;">{{ $metric['label'] ?? '' }}</p>
                             </article>
@@ -346,7 +346,7 @@
         @endif
 
         @if ($type === 'faq')
-            <section class="home-block-spaced">
+            <section class="home-block-spaced" data-aos="fade-up">
                 <div class="container">
                     <article class="cta-card">
                         <div class="eyebrow">Preguntas frecuentes</div>
@@ -365,7 +365,7 @@
         @endif
 
         @if ($type === 'cta')
-            <section class="home-block-spaced">
+            <section class="home-block-spaced" data-aos="fade-up">
                 <div class="container">
                     <article class="cta-card">
                         <div class="eyebrow">{{ $block['eyebrow'] ?? 'Siguiente paso' }}</div>

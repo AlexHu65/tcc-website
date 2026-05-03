@@ -538,6 +538,7 @@ footer .footer-cta:focus-visible {
 .hero .hero-heading span {
     color: var(--olive-dark);
     font-style: italic;
+    padding: 15px !important;
 }
 
 /* Ancho de lectura solo con imagen (2 col o apilado); sin imagen el texto sigue al ancho de la tarjeta. */

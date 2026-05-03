@@ -1,8 +1,23 @@
 import './bootstrap';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { initGalleryCarousels } from './modules/gallery-carousel';
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    AOS.init({
+        duration: 700,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 56,
+        anchorPlacement: 'top-bottom',
+    });
+    window.addEventListener('load', () => {
+        AOS.refresh();
+    });
+}
 
 const desktopStickyCta = document.getElementById('desktopStickyCta');
 if (desktopStickyCta) {
