@@ -11,15 +11,26 @@
             </div>
         </a>
 
-        <nav class="menu" aria-label="Principal">
-            <a href="/#inicio">{{ $ilse_nav_inicio ?? 'Inicio' }}</a>
+        <button
+            type="button"
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="main-nav"
+            aria-label="Abrir menú de navegación"
+        >
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+
+        <nav id="main-nav" class="menu" aria-label="Principal">
+            <a class="menu-link--home" href="/#inicio">{{ $ilse_nav_inicio ?? 'Inicio' }}</a>
             <a href="/#enfoque">{{ $ilse_nav_enfoque ?? 'Enfoque' }}</a>
             <a href="/#servicios">{{ $ilse_nav_servicios ?? 'Servicios' }}</a>
             <a href="/#sobre-mi">{{ $ilse_nav_sobre ?? 'Sobre mí' }}</a>
             <a href="/blog">{{ $ilse_nav_blog ?? 'Recursos' }}</a>
-            <a href="/#contacto">{{ $ilse_nav_contacto ?? 'Contacto' }}</a>
+            <a href="{{ route('bienestar') }}">{{ $ilse_nav_bienestar ?? 'Bienestar' }}</a>
+            <!--<a href="/#contacto">{{ $ilse_nav_contacto ?? 'Contacto' }}</a>-->
         </nav>
 
-        <a class="btn" href="/#contacto">{{ $ilse_header_cta_label ?? 'Agenda tu cita' }}</a>
+        <a class="btn nav-cta" href="/#contacto">{{ $ilse_header_cta_label ?? 'Agenda tu cita' }}</a>
     </div>
 </header>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BienestarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CpSensitiveSubmissionController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,8 @@ Route::get('/', function () {
 });
 
 Route::get('/blog', [BlogController::class, 'index']);
+
+Route::get('/bienestar', [BienestarController::class, 'show'])->name('bienestar');
 
 Route::middleware(['web', 'auth'])
     ->prefix(config('statamic.cp.route', 'cp'))

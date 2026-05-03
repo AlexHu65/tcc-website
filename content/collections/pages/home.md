@@ -95,6 +95,7 @@ ilse_nav_enfoque: Enfoque
 ilse_nav_servicios: Servicios
 ilse_nav_sobre: 'Sobre mí'
 ilse_nav_blog: Recursos
+ilse_nav_bienestar: Bienestar
 ilse_nav_contacto: Contacto
 ilse_header_cta_label: 'Agenda tu cita'
 ilse_footer_blurb: 'Base inicial para comenzar el desarrollo de la landing page con una línea visual limpia, sofisticada y emocionalmente cálida.'

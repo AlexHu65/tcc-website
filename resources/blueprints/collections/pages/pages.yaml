@@ -81,16 +81,59 @@ tabs:
                         type: text
                         display: Titulo enfasis (Ilse)
                     -
+                      handle: hero_title_size
+                      field:
+                        type: select
+                        display: Tamano del titulo
+                        instructions: Afecta el titulo principal del bloque hero (Ilse).
+                        default: default
+                        options:
+                          default: Normal
+                          large: Grande
+                          xl: Muy grande
+                    -
+                      handle: hero_include_image
+                      field:
+                        type: toggle
+                        display: Mostrar imagen
+                        instructions: Desactiva para un hero solo texto (una columna).
+                        default: true
+                    -
                       handle: hero_image
                       field:
-                        type: text
-                        display: Archivo imagen hero (public/images/ilse/)
-                        instructions: Nombre de archivo PNG/JPG dentro de public/images/ilse.
+                        type: assets
+                        display: Imagen del hero
+                        instructions: Elegi un archivo de la biblioteca. Si tenes contenido antiguo con solo nombre de archivo en public/images/ilse, seguira funcionando al guardar.
+                        container: assets
+                        max_files: 1
+                        mode: grid
                     -
                       handle: image_alt
                       field:
                         type: text
-                        display: Alt imagen hero
+                        display: Texto alternativo (alt) de la imagen
+                    -
+                      handle: hero_columns_desktop
+                      field:
+                        type: select
+                        display: Columnas en escritorio
+                        instructions: |
+                          Dos columnas — texto e imagen lado a lado (segun posicion).
+                          Una columna — con imagen activada, la imagen va arriba y el texto debajo; sin imagen, texto a ancho completo.
+                        default: '2'
+                        options:
+                          '2': Dos columnas (lado a lado)
+                          '1': Una columna (apilado o solo texto)
+                    -
+                      handle: hero_image_side
+                      field:
+                        type: select
+                        display: Lado de la imagen (solo dos columnas)
+                        instructions: Cuando hay dos columnas, define si la imagen va a la derecha o izquierda del texto.
+                        default: right
+                        options:
+                          right: Imagen a la derecha
+                          left: Imagen a la izquierda
                     -
                       handle: primary_cta_label
                       field:
@@ -440,8 +483,12 @@ tabs:
                     -
                       handle: image
                       field:
-                        type: text
-                        display: Archivo imagen (public/images/ilse/)
+                        type: assets
+                        display: Imagen lateral
+                        instructions: Elegi un archivo de la biblioteca Medios.
+                        container: assets
+                        max_files: 1
+                        mode: grid
                     -
                       handle: image_alt
                       field:
@@ -510,8 +557,12 @@ tabs:
                     -
                       handle: image
                       field:
-                        type: text
-                        display: Archivo imagen (public/images/ilse/)
+                        type: assets
+                        display: Imagen
+                        instructions: Elegi un archivo de la biblioteca Medios.
+                        container: assets
+                        max_files: 1
+                        mode: grid
                     -
                       handle: image_alt
                       field:
@@ -593,6 +644,11 @@ tabs:
               type: text
               display: Etiqueta Recursos (blog)
           -
+            handle: ilse_nav_bienestar
+            field:
+              type: text
+              display: Etiqueta Bienestar (check-in)
+          -
             handle: ilse_nav_contacto
             field:
               type: text
@@ -636,3 +692,27 @@ tabs:
             field:
               type: text
               display: Copyright
+      -
+        display: Redes sociales (flotante)
+        fields:
+          -
+            handle: ilse_social_whatsapp
+            field:
+              type: text
+              display: WhatsApp (URL)
+              instructions: 'Ej. https://wa.me/521XXXXXXXXXX — dejar vacío para usar .env o ocultar.'
+          -
+            handle: ilse_social_instagram
+            field:
+              type: text
+              display: Instagram (URL)
+          -
+            handle: ilse_social_facebook
+            field:
+              type: text
+              display: Facebook (URL)
+          -
+            handle: ilse_social_linkedin
+            field:
+              type: text
+              display: LinkedIn (URL)

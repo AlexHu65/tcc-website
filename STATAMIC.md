@@ -43,6 +43,7 @@ Este proyecto usa Laravel 12 como base de aplicacion y Statamic 6 como CMS.
 - Sitio publico:
   - `/`
   - `/blog`
+  - `/bienestar` (landing psicoterapia + check-in; ver [docs/BIENESTAR_CUESTIONARIO.md](docs/BIENESTAR_CUESTIONARIO.md))
 
 - Control Panel de Statamic:
   - `/cp`
@@ -163,7 +164,14 @@ Luego actualizar `config/statamic/eloquent-driver.php` de regreso a `driver: fil
 ## 7) Checklist rapido para nuevos cambios en contenido
 
 1. Confirmar blueprint en `resources/blueprints/...`.
-2. Crear/editar entrada desde CP o en `content/collections/...`.
-3. Verificar render en vistas de `resources/views/...`.
-4. Refrescar stache si hay inconsistencia: `php artisan statamic:stache:refresh`.
-5. Validar permisos de usuario CP (normal vs super admin).
+2. **Blueprints en Eloquent:** si anadiste un `.yaml` nuevo (por ejemplo `cuestionario`), hay que **importarlo a la BD** o el CP mostrara errores al abrir la coleccion o editar la entrada. Usa `--force` si ejecutas sin prompts; sin `--force`, `--no-interaction` puede **omitir** la importacion:
+   `php please eloquent:import-blueprints --force --no-interaction`
+3. Crear/editar entrada desde CP o en `content/collections/...`.
+4. **Entradas en Eloquent:** si el contenido vive en `.md` del repo, sincroniza cuando toque: `php please eloquent:import-entries --no-interaction`
+5. Verificar render en vistas de `resources/views/...`.
+6. Refrescar stache si hay inconsistencia: `php artisan statamic:stache:refresh`.
+7. Validar permisos de usuario CP (normal vs super admin).
+
+### Referencia: landing `/bienestar`
+
+Implementacion del blueprint **cuestionario**, ruta Laravel, vista Blade, assets Vite, sincronizacion Eloquent y decisiones tecnicas: [docs/BIENESTAR_CUESTIONARIO.md](docs/BIENESTAR_CUESTIONARIO.md).

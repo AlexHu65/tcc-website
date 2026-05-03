@@ -1,0 +1,245 @@
+title: 'Landing psicoterapia + check-in'
+tabs:
+  main:
+    display: Contenido
+    sections:
+      -
+        display: Hero
+        fields:
+          -
+            handle: hero_eyebrow
+            field:
+              type: text
+              display: Etiqueta superior
+              default: 'Terapia basada en evidencia · Online y presencial en Morelia'
+          -
+            handle: hero_title
+            field:
+              type: textarea
+              display: Título principal
+              instructions: 'Mensaje principal visible en la primera pantalla.'
+              default: 'Acompañamiento psicológico para vivir con más claridad, calma y bienestar emocional.'
+          -
+            handle: hero_subtitle
+            field:
+              type: textarea
+              display: Subtítulo
+              default: 'Un espacio seguro para comprender lo que sientes, hacer las paces con tus pensamientos y construir cambios reales en tu vida.'
+          -
+            handle: hero_primary_cta_label
+            field:
+              type: text
+              display: Texto botón principal
+              default: 'Agendar primera sesión'
+          -
+            handle: hero_primary_cta_url
+            field:
+              type: text
+              display: URL botón principal
+              default: 'https://wa.me/528124368392'
+          -
+            handle: hero_secondary_cta_label
+            field:
+              type: text
+              display: Texto botón secundario
+              default: 'Hacer check-in emocional'
+          -
+            handle: hero_secondary_cta_anchor
+            field:
+              type: text
+              display: Ancla botón secundario
+              default: '#checkin'
+          -
+            handle: hero_image
+            field:
+              type: assets
+              display: Imagen principal
+              container: assets
+              max_files: 1
+              mode: grid
+          -
+            handle: hero_quote_label
+            field:
+              type: text
+              display: Etiqueta tarjeta lateral
+              default: 'Tu proceso importa'
+          -
+            handle: hero_quote_text
+            field:
+              type: textarea
+              display: Cita destacada
+              default: '“No tienes que poder con todo en silencio.”'
+          -
+            handle: hero_quote_support
+            field:
+              type: textarea
+              display: Texto de apoyo (tarjeta lateral)
+              default: 'Aquí puedes hablar de lo que no siempre puedes contar, entender lo que te limita y desarrollar herramientas para vivir con menos malestar.'
+      -
+        display: Presentación profesional
+        fields:
+          -
+            handle: about_kicker
+            field:
+              type: text
+              display: Rótulo sección
+              default: 'Psicoterapia Cognitivo Conductual'
+          -
+            handle: about_title
+            field:
+              type: text
+              display: Título de presentación
+              default: 'Sobre mí'
+          -
+            handle: about_intro
+            field:
+              type: textarea
+              display: Introducción
+              default: 'Soy Licenciada en Psicología con formación especializada en Terapia Cognitivo Conductual. Acompaño a personas que buscan comprender lo que sienten, mejorar su bienestar emocional y construir cambios reales en su vida.'
+          -
+            handle: about_body
+            field:
+              type: bard
+              display: Texto completo
+              buttons:
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - anchor
+              save_html: false
+              default:
+                -
+                  type: paragraph
+                  content:
+                    -
+                      type: text
+                      text: 'He concluido la Maestría en Psicoterapia Cognitivo Conductual, lo que me permite trabajar desde un enfoque basado en evidencia, con herramientas prácticas y efectivas para el acompañamiento emocional.'
+          -
+            handle: focus_areas
+            field:
+              type: grid
+              display: Áreas de acompañamiento
+              add_row: 'Agregar área'
+              fields:
+                -
+                  handle: label
+                  field:
+                    type: text
+                    display: Área
+              default:
+                - label: Ansiedad
+                - label: Autoexigencia
+                - label: Procesos de cambio
+      -
+        display: Check-in emocional
+        fields:
+          -
+            handle: checkin_enabled
+            field:
+              type: toggle
+              display: Mostrar check-in emocional
+              default: true
+          -
+            handle: checkin_title
+            field:
+              type: text
+              display: Título
+              default: '¿Cómo está tu bienestar emocional hoy?'
+          -
+            handle: checkin_intro
+            field:
+              type: textarea
+              display: Introducción
+              default: 'Este cuestionario no sustituye una valoración psicológica, pero puede ayudarte a identificar señales de malestar emocional que merecen atención y acompañamiento profesional.'
+          -
+            handle: checkin_questions
+            field:
+              type: grid
+              display: Preguntas
+              add_row: 'Agregar pregunta'
+              fields:
+                -
+                  handle: question
+                  field:
+                    type: text
+                    display: Pregunta
+                -
+                  handle: category
+                  field:
+                    type: select
+                    display: Categoría
+                    options:
+                      mood: Estado emocional
+                      thoughts: Pensamientos
+                      body: Cuerpo y energía
+                      behavior: Conducta
+                      risk: Seguridad
+              default:
+                - question: 'Me he sentido triste, irritable o emocionalmente agotado/a.'
+                  category: mood
+                - question: 'Me cuesta dejar de sobrepensar o preocuparme.'
+                  category: thoughts
+                - question: 'He sentido que no soy suficiente o que estoy fallando.'
+                  category: thoughts
+                - question: 'Mi sueño, energía o apetito han cambiado últimamente.'
+                  category: body
+                - question: 'He evitado personas, decisiones o actividades importantes.'
+                  category: behavior
+                - question: 'Me cuesta disfrutar cosas que antes me hacían bien.'
+                  category: mood
+                - question: 'He pensado que sería mejor no estar aquí o hacerme daño.'
+                  category: risk
+          -
+            handle: checkin_disclaimer
+            field:
+              type: textarea
+              display: Aviso ético
+              default: 'Este check-in no es un diagnóstico. Si marcaste pensamientos de hacerte daño, busca apoyo inmediato con una persona de confianza o servicios de emergencia de tu localidad.'
+          -
+            handle: checkin_cta_label
+            field:
+              type: text
+              display: Texto botón CTA final
+              instructions: 'Usado en el bloque oscuro al pie de la página.'
+              default: 'Agendar una sesión'
+      -
+        display: CTA final
+        fields:
+          -
+            handle: final_cta_heading
+            field:
+              type: text
+              display: Título
+              default: '¿Te gustaría comenzar tu proceso?'
+          -
+            handle: final_cta_body
+            field:
+              type: textarea
+              display: Texto
+              default: 'Agenda una sesión online o presencial en Morelia.'
+          -
+            handle: final_cta_url
+            field:
+              type: text
+              display: URL del botón
+              instructions: 'Opcional. Si está vacío, se usa la URL del botón principal del hero.'
+  seo:
+    display: SEO
+    sections:
+      -
+        display: Metadatos
+        fields:
+          -
+            handle: meta_title
+            field:
+              type: text
+              display: Meta title
+              default: 'Bienestar emocional | Ilse Méndez'
+          -
+            handle: meta_description
+            field:
+              type: textarea
+              display: Meta description
+              character_limit: 160
+              default: 'Psicoterapia cognitivo conductual online y presencial en Morelia. Check-in emocional orientativo y acompañamiento profesional.'
