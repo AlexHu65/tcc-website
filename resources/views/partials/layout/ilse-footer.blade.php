@@ -30,7 +30,7 @@
             <div class="footer-contact">
                 <div class="footer-title">{{ $ilse_footer_contact_title ?? 'Contacto' }}</div>
                 @forelse ($footerContact as $line)
-                    <a href="{{ is_array($line) ? ($line['line'] ?? '') : $line }}">{{ is_array($line) ? ($line['line'] ?? '') : $line }}</a>
+                    <a target="_blank" href="{{ is_array($line) ? ($line['line'] ?? '') : $line }}">{{ is_array($line) ? ($line['line'] ?? '') : $line }}</a>
                 @empty
                     <span>{{ $ilse_footer_whatsapp_line ?? 'WhatsApp: pendiente de integrar' }}</span>
                     <span>{{ $ilse_footer_email_line ?? 'Email: hola@ilsemendezpsico.com' }}</span>
