@@ -135,6 +135,24 @@ php artisan optimize:clear
 npm run build
 ```
 
+## Deploy (producción)
+
+Después de `composer install` / `composer update`, asegúrate de publicar los assets de Statamic CP:
+
+```bash
+php artisan vendor:publish --tag=statamic-cp --force
+```
+
+Verifica que el bundle principal no esté vacío (debe pesar ~3 MB, no 0 bytes):
+
+```bash
+wc -c public/vendor/statamic/cp/build/assets/index-*.js
+```
+
+Si usas Cloudflare, purga la caché de `/vendor/statamic/cp/*` tras republicar.
+
+Si `/cp/auth/login` carga en blanco y la consola muestra `Statamic is not defined`, casi siempre el archivo `index-*.js` en el servidor está corrupto o vacío.
+
 ## Notas para GitHub
 
 - No subir credenciales ni `.env`.
