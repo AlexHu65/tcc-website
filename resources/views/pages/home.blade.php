@@ -16,13 +16,72 @@
     @endphp
 
     @if ($contactSuccessMessage)
-        <div class="ilse-toast ilse-toast--success" role="status" aria-live="polite" data-ilse-toast>
+        <style>
+            .ilse-simple-toast {
+                position: fixed;
+                top: 110px;
+                right: max(18px, calc((100vw - var(--max)) / 2));
+                z-index: 120;
+                display: flex;
+                align-items: flex-start;
+                gap: 14px;
+                width: min(420px, calc(100vw - 32px));
+                padding: 18px;
+                border: 1px solid rgba(111, 113, 87, 0.28);
+                border-left: 5px solid var(--olive);
+                border-radius: 20px;
+                background: #fbf7f3;
+                box-shadow: 0 18px 55px rgba(44, 36, 31, 0.16);
+                color: var(--text);
+            }
+
+            .ilse-simple-toast strong {
+                display: block;
+                margin-bottom: 4px;
+                font-size: 0.86rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--olive-dark);
+            }
+
+            .ilse-simple-toast p {
+                margin: 0;
+                color: var(--muted);
+                line-height: 1.5;
+            }
+
+            .ilse-simple-toast__close {
+                flex: 0 0 auto;
+                width: 30px;
+                height: 30px;
+                margin-left: auto;
+                border: 1px solid var(--line);
+                border-radius: 50%;
+                background: #fff;
+                color: var(--muted);
+                cursor: pointer;
+                font-size: 1.25rem;
+                line-height: 1;
+            }
+
+            .ilse-simple-toast.is-hidden {
+                display: none;
+            }
+        </style>
+
+        <div class="ilse-simple-toast" role="status" aria-live="polite" data-simple-toast>
             <div>
                 <strong>Mensaje enviado</strong>
                 <p>{{ $contactSuccessMessage }}</p>
             </div>
-            <button type="button" aria-label="Cerrar notificación" data-ilse-toast-close>&times;</button>
+            <button type="button" class="ilse-simple-toast__close" aria-label="Cerrar notificación" data-simple-toast-close>&times;</button>
         </div>
+
+        <script>
+            document.querySelector('[data-simple-toast-close]')?.addEventListener('click', function () {
+                document.querySelector('[data-simple-toast]')?.classList.add('is-hidden');
+            });
+        </script>
     @endif
 
     @foreach ($blocks as $block)

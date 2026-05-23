@@ -148,6 +148,24 @@
         color: rgba(110, 101, 93, 0.55);
     }
 
+    .ilse-contact-modal .ilse-alert {
+        border: 1px solid rgba(111, 113, 87, 0.22);
+        box-shadow: 0 12px 32px rgba(44, 36, 31, 0.08);
+    }
+
+    .ilse-contact-modal .ilse-alert--success {
+        background: rgba(141, 141, 112, 0.14);
+        color: var(--olive-dark);
+        border-left: 5px solid var(--olive);
+    }
+
+    .ilse-contact-modal .ilse-alert--error {
+        background: rgba(180, 60, 60, 0.12);
+        color: #8a2f2f;
+        border-color: rgba(180, 60, 60, 0.22);
+        border-left: 5px solid #b43c3c;
+    }
+
     .ilse-contact-modal__actions {
         display: flex;
         flex-wrap: wrap;
@@ -236,7 +254,7 @@
         <p class="ilse-contact-modal__intro">Compártenos tus datos y nos pondremos en contacto contigo para acompañarte en el siguiente paso.</p>
 
         @if ($contactSuccessMessage)
-            <p class="ilse-alert ilse-alert--success" style="color: var(--success);">{{ $contactSuccessMessage }}</p>
+            <p class="ilse-alert ilse-alert--success">{{ $contactSuccessMessage }}</p>
         @endif
 
         @if ($errors->any())

@@ -81,17 +81,6 @@ if (contactForm) {
     });
 }
 
-const ilseToast = document.querySelector('[data-ilse-toast]');
-if (ilseToast) {
-    const closeToast = () => {
-        ilseToast.classList.add('is-hiding');
-        window.setTimeout(() => ilseToast.remove(), 220);
-    };
-
-    ilseToast.querySelector('[data-ilse-toast-close]')?.addEventListener('click', closeToast);
-    window.setTimeout(closeToast, 6500);
-}
-
 initGalleryCarousels();
 
 const navToggle = document.querySelector('.nav-toggle');
