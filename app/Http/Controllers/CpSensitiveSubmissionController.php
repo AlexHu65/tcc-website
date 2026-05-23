@@ -25,6 +25,7 @@ class CpSensitiveSubmissionController extends Controller
             $row->nombre = $payload['nombre'] ?? null;
             $row->email = $payload['email'] ?? null;
             $row->telefono = $payload['telefono'] ?? null;
+            $row->mensaje = $payload['mensaje'] ?? null;
 
             return $row;
         });

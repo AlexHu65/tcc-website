@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Statamic\Events\FormSubmitted;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
 
 class StoreSensitiveFormSubmission
 {
@@ -27,6 +29,9 @@ class StoreSensitiveFormSubmission
             return;
         }
 
+        // Enviar correo de notificación
+        Mail::to('hola@psicoterapiacognitiva.com.mx')->send(new ContactMail($data));
+
         DB::table('sensitive_form_submissions')->insert([
             'form_handle' => $form->handle(),
             'submission_id' => (string) $submission->id(),
@@ -38,5 +43,7 @@ class StoreSensitiveFormSubmission
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        session()->flash('contact_success', 'Tu mensaje se envió correctamente. Te responderemos lo antes posible.');
     }
 }

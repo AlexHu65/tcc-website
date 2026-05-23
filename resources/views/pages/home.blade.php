@@ -12,7 +12,18 @@
     @php
         $blocks = $sections ?? [];
         $ilseAsset = fn (?string $file, string $default) => asset('images/ilse/' . (($file ?? '') !== '' ? $file : $default));
+        $contactSuccessMessage = session('contact_success') ?? session('success');
     @endphp
+
+    @if ($contactSuccessMessage)
+        <div class="ilse-toast ilse-toast--success" role="status" aria-live="polite" data-ilse-toast>
+            <div>
+                <strong>Mensaje enviado</strong>
+                <p>{{ $contactSuccessMessage }}</p>
+            </div>
+            <button type="button" aria-label="Cerrar notificación" data-ilse-toast-close>&times;</button>
+        </div>
+    @endif
 
     @foreach ($blocks as $block)
         @php
@@ -275,8 +286,8 @@
                                 <p style="text-align:center;margin-bottom:24px;">{{ $block['intro_copy'] }}</p>
                             @endif
 
-                            @if (session('success'))
-                                <p class="ilse-alert ilse-alert--success">{{ session('success') }}</p>
+                            @if ($contactSuccessMessage)
+                                <p class="ilse-alert ilse-alert--success">{{ $contactSuccessMessage }}</p>
                             @endif
 
                             @if ($errors->any())
