@@ -172,16 +172,8 @@ if (ilseSocialFloat) {
         setOpen(!ilseSocialFloat.classList.contains('is-open'));
     });
 
-    document.addEventListener('click', (event) => {
-        if (!ilseSocialFloat.classList.contains('is-open')) {
-            return;
-        }
-        const target = event.target;
-        if (target instanceof Node && ilseSocialFloat.contains(target)) {
-            return;
-        }
-        setOpen(false);
-    });
+    window.addEventListener('hashchange', () => setOpen(true));
+    setOpen(true);
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && ilseSocialFloat.classList.contains('is-open')) {
