@@ -261,9 +261,9 @@
             <p class="ilse-alert ilse-alert--error">Revisa los datos del formulario e intenta de nuevo.</p>
         @endif
 
-        <form action="{{ route('statamic.forms.submit', ['form' => 'contacto']) }}" method="POST">
+        <form action="{{ route('statamic.forms.submit', ['form' => 'contacto']) }}" method="POST" onsubmit="history.replaceState(null, '', location.pathname + location.search)">
             @csrf
-            <input type="hidden" name="_redirect" value="{{ url('/#ilse-contact-modal') }}">
+            <input type="hidden" name="_redirect" value="{{ url()->current() }}">
             <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off">
 
             <div class="ilse-field">
