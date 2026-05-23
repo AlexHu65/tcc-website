@@ -241,6 +241,29 @@
             </svg>
         </button>
     </div>
+
+    <script>
+        document.addEventListener('click', function (event) {
+            var socialFloat = document.querySelector('[data-ilse-social-float]');
+
+            if (!socialFloat || socialFloat.contains(event.target)) {
+                return;
+            }
+
+            setTimeout(function () {
+                var toggle = socialFloat.querySelector('[data-ilse-social-float-toggle]');
+                var menu = socialFloat.querySelector('#ilse-social-float-menu');
+
+                socialFloat.classList.add('is-open');
+                toggle?.setAttribute('aria-expanded', 'true');
+                toggle?.setAttribute('aria-label', 'Cerrar enlaces a redes sociales');
+                menu?.setAttribute('aria-hidden', 'false');
+                menu?.querySelectorAll('a').forEach(function (link) {
+                    link.removeAttribute('tabindex');
+                });
+            }, 0);
+        });
+    </script>
 @endif
 
 <section id="ilse-contact-modal" class="ilse-contact-modal" aria-labelledby="ilse-contact-modal-title" role="dialog" aria-modal="true">
