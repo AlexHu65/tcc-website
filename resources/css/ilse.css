@@ -1086,13 +1086,21 @@ footer {
 }
 
 @media (max-width: 1024px) {
-    /* No aplicar 2 columnas al hero de una sola columna (sin imagen): si no, el article ocupa solo la mitad del grid. */
-    .hero-grid:not(.hero-grid--single),
     .split,
     .about-inner,
     .footer-card,
     .grid-4 {
         grid-template-columns: 1fr 1fr;
+    }
+
+    /* En tablet el hero respira mejor apilado: la imagen deja de quedar reducida a media columna. */
+    .hero-grid:not(.hero-grid--single) {
+        grid-template-columns: 1fr;
+    }
+
+    .hero--layout-split .visual-card {
+        width: min(100%, 720px);
+        justify-self: center;
     }
 
     header .container.nav {
@@ -1266,6 +1274,10 @@ footer {
 
     .hero .hero-heading--xl {
         font-size: 3.35rem;
+    }
+
+    .hero--layout-split .visual-card {
+        padding: 12px;
     }
 }
 
