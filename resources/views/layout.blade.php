@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/css/ilse.css', 'resources/js/app.js'])
     @stack('styles')
+    <script src="https://kit.fontawesome.com/8a0ae86e3a.js" crossorigin="anonymous"></script>
 </head>
 <body class="ilse-shell">
     @include('partials.layout.ilse-header')

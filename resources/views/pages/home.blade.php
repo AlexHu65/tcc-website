@@ -131,6 +131,13 @@
                     }
                     $emphasis = $block['title_emphasis'] ?? 'transformar tu vida.';
                     $heroContentFullWidth = ! $showHeroImage;
+                    $heroAgendaUrl = $block['primary_cta_url'] ?? '#contacto';
+                    $heroCheckInUrl = url('/bienestar').'#checkin';
+                    $heroWhatsappUrl = trim((string) ($ilse_social_whatsapp ?? config('ilse.social.whatsapp') ?? ''));
+                    if ($heroWhatsappUrl === '') {
+                        $heroWhatsappUrl = '#contacto';
+                    }
+                    $heroWhatsappExternal = str_starts_with($heroWhatsappUrl, 'http');
             @endphp
             <section class="{{ $heroSectionClass }}" id="inicio">
                     <div class="container {{ $stacked ? 'hero-stack' : 'hero-grid'.(!$showHeroImage ? ' hero-grid--single hero-inner--full' : '') }}">
@@ -152,9 +159,43 @@
                                 {{ $block['title_before'] ?? '' }}@if(($block['title_emphasis'] ?? '') !== '')<span>{{ $block['title_emphasis'] }}</span>@elseif(($block['title'] ?? '') !== '')<span>{{ $block['title'] }}</span>@else<span>{{ $emphasis }}</span>@endif
                             </h2>
                             <p>{{ $block['subtitle'] ?? '' }}</p>
-                            <div class="hero-actions">
-                                <a class="btn" href="{{ $block['primary_cta_url'] ?? '#contacto' }}">{{ $block['primary_cta_label'] ?? 'Agenda tu cita' }}</a>
-                                <a class="btn secondary" href="{{ $block['secondary_cta_url'] ?? '#sobre-mi' }}">{{ $block['secondary_cta_label'] ?? 'Conoce más' }}</a>
+                            <div class="hero-actions hero-actions--featured" aria-label="Acciones principales">
+                                <a class="btn hero-primary-action" href="{{ $heroAgendaUrl }}">
+                                    <span class="hero-action-icon" aria-hidden="true">
+                                        <i class="fa-regular fa-calendar"></i>
+                                    </span>
+                                    Agenda tu cita
+                                </a>
+
+                                <div class="hero-secondary-actions">
+                                    <article class="hero-action-card">
+                                        <div class="hero-action-circle" aria-hidden="true">
+                                            <i style="font-size: 25px;" class="fa-solid fa-heart"></i>
+                                        </div>
+
+                                        <a class="btn secondary hero-outline-action" href="{{ $heroCheckInUrl }}">
+                                            Haz tu check in emocional
+                                        </a>
+                                        <br>
+                                        <small>
+                                            Este cuestionario no sustituye una valoración psicológica, pero puede ayudarte a identificar señales de malestar emocional que merecen atención y acompañamiento profesional.
+                                        </small>
+                                    </article>
+
+                                    <article class="hero-action-card">
+                                        <div class="hero-action-circle" aria-hidden="true">
+                                            <i style="font-size: 25px;" class="fa-brands fa-whatsapp"></i>
+                                        </div>
+
+                                        <a class="btn secondary hero-outline-action" href="{{ $heroWhatsappUrl }}" @if ($heroWhatsappExternal) target="_blank" rel="noopener" @endif>
+                                            Envía WhatsApp
+                                        </a>
+                                        <small>
+                                            <br>
+                                            Escríbeme tus dudas sobre las sesiones y con gusto te respondo para orientarte.
+                                        </small>
+                                    </article>
+                                </div>
                             </div>
                         </article>
 
